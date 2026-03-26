@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZERO Markets · Q1 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#111009;--ink2:#3d3b35;--ink3:#8c8880;
+  --paper:#f6f5f1;--paper2:#efede8;--paper3:#e3e1d9;
+  --line:rgba(0,0,0,0.09);--line2:rgba(0,0,0,0.05);
+  --g:#129c5e;--gl:#dff5eb;--gd:#07472b;
+  --r:#c83b1e;--rl:#fceee9;--rd:#6e1e0b;
+  --a:#b56d0a;--al:#fdf2e0;--ad:#613a04;
+  --b:#1a52be;--bl:#e3ecfc;--bd:#0c2a6a;
+  --p:#5535b8;--pl:#eeebfd;--pd:#2c1870;
+  --disp:'DM Sans',system-ui,sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* ─────────────────────── HEADER ─────────────────────── */
+.hdr{
+  background:#fff;
+  border-bottom:2px solid var(--paper3);
+  padding:.75rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  width:100%;
+}
+.hdr-inner{display:contents}
+.hdr-left{display:flex;align-items:center;gap:1.5rem;min-width:0;flex:1}
+.hdr-identity{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hdr-mark{width:22px;height:22px;background:var(--ink);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:10px;font-weight:800;color:#fff;flex-shrink:0}
+.hdr-wordmark{font-family:var(--disp);font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.hdr-divider{width:1px;height:28px;background:var(--line);flex-shrink:0}
+.hdr-title{font-family:var(--disp);font-size:clamp(16px,1.6vw,20px);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1;white-space:nowrap}
+.hdr-title em{color:var(--ink3);font-style:normal}
+.hdr-desc{font-size:11px;color:var(--ink3);line-height:1.4;max-width:340px;font-weight:400;border-left:1px solid var(--line);padding-left:1.25rem;margin-left:.25rem}
+
+/* right: KPI strip */
+.hdr-kpis{display:flex;align-items:center;gap:0;flex-shrink:0;border-left:1px solid var(--line);padding-left:1.5rem}
+.hk{padding:0 .875rem;border-right:1px solid var(--line2);text-align:right}
+.hk:last-child{border-right:none;padding-right:0}
+.hk-l{font-size:8.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px;white-space:nowrap}
+.hk-v{font-family:var(--disp);font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.025em;line-height:1}
+.hk-v.good{color:var(--gd)}
+.hk-v.warn{color:var(--ad)}
+.hk-s{font-size:9px;color:var(--ink3);margin-top:1px}
+
+/* ─────────────────────── NAV ─────────────────────── */
+.nav{background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 2rem;position:sticky;top:0;z-index:200;height:40px;gap:0;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tab{font-family:var(--body);font-size:12px;font-weight:500;color:var(--ink3);padding:0 12px;height:40px;display:flex;align-items:center;cursor:pointer;border-bottom:2px solid transparent;transition:color .12s;white-space:nowrap;letter-spacing:-.005em}
+.tab:hover{color:var(--ink2)}.tab.active{color:var(--ink);border-color:var(--ink);font-weight:600}
+.nav-sep{flex:1}
+.nav-tag{font-size:10px;color:var(--ink3);letter-spacing:.04em;font-weight:400}
+
+/* ─────────────────────── LAYOUT ─────────────────────── */
+.wrap{padding:0 2rem 3.5rem}
+.page{display:none}.page.active{display:block}
+
+/* section heading */
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.875rem 0 .4rem;border-bottom:1px solid var(--line)}
+.sh-l{font-family:var(--disp);font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.sh-r{font-size:10px;color:var(--ink3);font-weight:400}
+
+/* ─────────────────────── KPI STRIP ─────────────────────── */
+.ks{display:grid;border-bottom:1px solid var(--line)}
+.n4{grid-template-columns:repeat(4,1fr)}.n5{grid-template-columns:repeat(5,1fr)}.n6{grid-template-columns:repeat(6,1fr)}
+.ki{padding:.5rem .75rem .5rem .5rem;border-right:1px solid var(--line2);position:relative;text-align:center}
+.ki:last-child{border-right:none}
+.ki-accent{position:absolute;top:0;left:0;width:2px;height:100%;display:none}
+.ki-l{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.ki-v{font-family:var(--disp);font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.025em;line-height:1}
+.ki-s{font-size:10px;color:var(--ink3);margin-top:3px}
+.ki-pill{display:inline-block;font-size:9px;font-weight:600;padding:1px 6px;border-radius:2px;margin-top:4px;letter-spacing:.02em}
+
+/* ─────────────────────── GRIDS ─────────────────────── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line)}
+.g21{display:grid;grid-template-columns:1.3fr 1fr;gap:1px;background:var(--line)}
+.g12{display:grid;grid-template-columns:1fr 1.3fr;gap:1px;background:var(--line)}
+.cell{background:#fff;padding:.75rem}
+.ct{font-family:var(--body);font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem}
+
+/* ─────────────────────── CHARTS ─────────────────────── */
+.cw{position:relative}
+.h160{height:160px}.h190{height:190px}.h220{height:200px}.h250{height:250px}.h280{height:250px}.h310{height:280px}
+
+/* ─────────────────────── FUNNEL ─────────────────────── */
+.fn-row{display:flex;align-items:center;gap:0;margin-bottom:3px}
+.fn-lbl{width:96px;font-size:11px;font-weight:500;color:var(--ink2);flex-shrink:0;text-align:right;padding-right:11px}
+.fn-wrap{flex:1;display:flex;align-items:center;gap:8px}
+.fn-bg{flex:1;height:26px;background:var(--paper2);border-radius:1px;overflow:hidden}
+.fn-fill{height:100%;display:flex;align-items:center;padding-left:9px;font-family:var(--disp);font-size:11px;font-weight:700;color:rgba(255,255,255,.93);white-space:nowrap}
+.fn-meta{font-size:10px;color:var(--ink3);width:84px;flex-shrink:0}
+.fn-drop{padding:1px 0 4px 96px;font-size:10px;color:var(--r);opacity:.65;font-weight:500}
+
+/* ─────────────────────── WATERFALL ─────────────────────── */
+.wf-hd{display:grid;grid-template-columns:118px 1fr 62px 148px;gap:8px;padding:3px 0 6px;border-bottom:1px solid var(--line)}
+.wf-h{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
+.wf-h.r{text-align:right}
+.wf-row{display:grid;grid-template-columns:118px 1fr 62px 148px;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--line2)}
+.wf-row:last-child{border-bottom:none}
+.wf-n{font-size:12px;font-weight:500;color:var(--ink2)}
+.wf-bg{height:17px;background:var(--paper2);border-radius:1px;overflow:hidden}
+.wf-f{height:100%;display:flex;align-items:center;padding-left:6px;font-size:9px;font-weight:600;color:rgba(255,255,255,.9);white-space:nowrap}
+.wf-amt{font-size:11px;color:var(--ink2);text-align:right;font-weight:500}
+.wf-res{font-size:10px;font-weight:600;text-align:right}
+.wf-res.ok{color:var(--gd)}.wf-res.z{color:var(--rd)}.wf-res.w{color:var(--ad)}
+
+/* ─────────────────────── TABLE ─────────────────────── */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-size:8.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);padding:4px 8px;border-bottom:1px solid var(--line);text-align:left;cursor:pointer;user-select:none;white-space:nowrap;background:#fff}
+.tbl th:hover{color:var(--ink)}.tbl th.asc::after{content:' ↑';color:var(--g)}.tbl th.desc::after{content:' ↓';color:var(--g)}
+.tbl td{padding:5px 8px;border-bottom:1px solid var(--line2);font-size:11.5px;color:var(--ink);vertical-align:middle;line-height:1.3}
+.tbl tr:hover td{background:var(--paper)}
+.tbl tr.hi td{background:#f5fdf8}.tbl tr.lo td{background:#fdf8f5}
+.tbl tr.tot td{font-weight:600;background:var(--paper2);border-top:1px solid var(--line);border-bottom:none}
+
+/* ─────────────────────── PILLS ─────────────────────── */
+.pill{display:inline-block;font-size:9px;font-weight:600;padding:1px 7px;border-radius:2px;letter-spacing:.02em}
+.pg{background:var(--gl);color:var(--gd)}.pr{background:var(--rl);color:var(--rd)}.pa{background:var(--al);color:var(--ad)}.pb{background:var(--bl);color:var(--bd)}.pp{background:var(--pl);color:var(--pd)}.pn{background:var(--paper3);color:var(--ink3)}
+
+/* ─────────────────────── HEAT ─────────────────────── */
+.hot{color:var(--gd);font-weight:600}.mid{color:var(--ad);font-weight:600}.low{color:var(--rd);font-weight:600}.na{color:var(--ink3)}
+
+/* ─────────────────────── INLINE BARS ─────────────────────── */
+.ibr{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.ibr-l{width:78px;font-size:11px;color:var(--ink2);flex-shrink:0;text-align:right}
+.ibr-bg{flex:1;height:15px;background:var(--paper2);border-radius:1px;overflow:hidden}
+.ibr-f{height:100%;display:flex;align-items:center;padding-left:5px;font-size:9px;font-weight:600;color:rgba(255,255,255,.9)}
+.ibr-v{font-size:11px;font-weight:600;color:var(--ink2);width:52px;flex-shrink:0}
+
+/* ─────────────────────── THOUGHT CARDS ─────────────────────── */
+.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.tc{background:#fff;padding:1rem}
+.tc-num{font-size:9px;font-weight:600;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;font-family:var(--body)}
+.tc-h{font-family:var(--body);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.3;letter-spacing:-.02em}
+.tc-h.g{color:var(--gd)}.tc-h.r{color:var(--rd)}.tc-h.a{color:var(--ad)}.tc-h.b{color:var(--bd)}.tc-h.p{color:var(--pd)}
+.tc-body{font-size:12px;color:var(--ink2);line-height:1.62}
+.tc-tag{display:inline-block;margin-top:8px;font-size:9px;font-weight:600;padding:2px 8px;border-radius:2px;letter-spacing:.02em}
+
+/* ─────────────────────── NOTES ─────────────────────── */
+.note{background:var(--gl);border-left:2px solid var(--g);padding:7px 11px;font-size:11px;color:var(--gd);line-height:1.55;margin:.5rem 0}
+.note-a{background:var(--al);border-left:2px solid var(--a);padding:7px 11px;font-size:11px;color:var(--ad);line-height:1.55;margin:.5rem 0}
+
+/* ─────────────────────── FILTER ─────────────────────── */
+.fp{display:flex;gap:4px;flex-wrap:wrap;padding:.625rem 0 .25rem}
+.fpill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:2px;border:1px solid var(--line);cursor:pointer;color:var(--ink3);background:#fff;transition:all .1s}
+.fpill:hover{color:var(--ink)}.fpill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ─────────────────────── SUMMARY STAT BAND ─────────────────────── */
+.stat-band{background:#fff;border-bottom:1px solid var(--line);display:grid}
+.sb-item{padding:.75rem .875rem;border-right:1px solid var(--line2)}
+.sb-item:last-child{border-right:none}
+.sb-l{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:3px}
+.sb-v{font-family:var(--disp);font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.sb-s{font-size:10px;color:var(--ink3);margin-top:3px}
+
+/* ─────────────────────── APP BADGE ─────────────────────── */
+.surf-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:600;padding:1px 7px;border-radius:2px;letter-spacing:.03em}
+.sb-web{background:var(--bl);color:var(--bd)}
+.sb-app{background:var(--al);color:var(--ad)}
+
+/* ── TABLET (≤960px) ── */
+@media(max-width:960px){
+  .hdr{flex-wrap:wrap;padding:.75rem 1.25rem;gap:.625rem}
+  .hdr-left{flex-wrap:wrap;gap:.5rem;flex:none;width:100%}
+  .hdr-desc{display:none}
+  .hdr-kpis{border-left:none;padding-left:0;width:100%;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);padding-top:.375rem;margin-top:.125rem}
+  .hk{padding:.375rem .75rem;border-right:1px solid var(--line2);border-bottom:none;flex:1;min-width:90px}
+  .n4,.n5,.n6{grid-template-columns:repeat(3,1fr)}
+  .g2,.g3,.g21,.g12{grid-template-columns:1fr}
+  .tc-grid{grid-template-columns:1fr 1fr}
+  .wrap,.nav{padding-left:1.25rem;padding-right:1.25rem}
+  .wf-hd,.wf-row{grid-template-columns:100px 1fr 56px}
+  .wf-res{display:none}
+}
+
+/* ── MOBILE (≤600px) ── */
+@media(max-width:600px){
+  /* Header: stacked */
+  .hdr{padding:.625rem 1rem;gap:.5rem;flex-direction:column;align-items:flex-start}
+  .hdr-left{gap:.5rem;width:100%;align-items:center}
+  .hdr-identity{flex-shrink:0}
+  .hdr-divider{display:none}
+  .hdr-title{font-size:16px;white-space:normal}
+  .hdr-desc{display:none}
+  .hdr-kpis{display:grid;grid-template-columns:repeat(3,1fr);width:100%;border-top:1px solid var(--line);padding-top:.375rem;gap:0}
+  .hk{padding:.375rem .5rem;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);text-align:center;min-width:0;flex:none}
+  .hk:nth-child(3n){border-right:none}
+  .hk-v{font-size:13px}
+  .hk-l{font-size:7.5px}
+
+  /* Nav: horizontal scroll, no text truncation */
+  .nav{padding:0 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav-sep,.nav-tag{display:none}
+  .tab{padding:0 10px;font-size:11.5px;flex-shrink:0}
+
+  /* Wrap */
+  .wrap{padding:0 1rem 2.5rem}
+
+  /* KPI strips on pages */
+  .n4,.n5,.n6{grid-template-columns:repeat(2,1fr)}
+  .ki{padding:.5rem .625rem .5rem .375rem}
+  .ki-v{font-size:15px}
+  .ki-s{font-size:9px}
+
+  /* All grids single col */
+  .g2,.g3,.g21,.g12,.tc-grid{grid-template-columns:1fr}
+
+  /* Section headings */
+  .sh{flex-direction:column;gap:.125rem;padding:.75rem 0 .375rem}
+  .sh-r{display:none}
+
+  /* Tables: horizontal scroll */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+  .tbl{min-width:480px}
+
+  /* Charts: shorter on mobile */
+  .h160{height:140px}.h190{height:160px}.h220{height:180px}
+  .h250{height:200px}.h280{height:220px}.h310{height:240px}
+
+  /* Waterfall */
+  .wf-hd,.wf-row{grid-template-columns:90px 1fr 50px}
+  .wf-res{display:none}
+  .wf-h.r,.wf-amt{font-size:9px}
+
+  /* Funnel vis */
+  .fn-lbl{width:72px;font-size:10px}
+  .fn-meta{display:none}
+  .fn-drop{padding-left:72px;font-size:9px}
+
+  /* Inline bars */
+  .ibr-l{width:60px;font-size:10px}
+
+  /* Thoughts */
+  .tc{padding:.75rem}
+  .tc-h{font-size:12px}
+  .tc-body{font-size:11px}
+
+  /* Notes/alerts */
+  .note,.note-a,.note-r{font-size:10.5px;padding:6px 10px}
+
+  /* Cell */
+  .cell{padding:.625rem}
+  .ct{margin-bottom:.375rem}
+
+  /* Stat band in thoughts */
+  .stat-band-thoughts{grid-template-columns:repeat(2,1fr)!important}
+  
+  /* Priority table */
+  .tbl td{font-size:11px;padding:5px 6px}
+  .tbl th{font-size:8px;padding:4px 6px}
+}
+.nav::-webkit-scrollbar{display:none}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-identity">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140" style="height:22px;width:auto;display:block;flex-shrink:0"><defs><style>.cls-1{fill:#2c393e;}.cls-2{fill:#0ba347;}</style></defs><path class="cls-1" d="M58.13,34.42v71.16h71.12V34.42ZM115,91.35H72.36V86.57L90.2,62.86H72.36V48.65H115v4.78L97.26,77.11H115Z"/><polygon class="cls-2" points="97.26 77.11 115.04 77.11 147.06 34.42 129.27 34.42 97.26 77.11"/><polygon class="cls-2" points="90.15 62.89 72.36 62.89 40.34 105.58 58.13 105.58 90.15 62.89"/><path class="cls-1" d="M155,94.82c-3.15,0-6-1.77-6-5.39A6.26,6.26,0,0,1,151.19,85l30.12-29.65H149.63V45.15h43.16c3.07,0,6,1.85,6,5.39a6.29,6.29,0,0,1-2.18,4.51L166.49,84.72H199v10.1Z"/><path class="cls-1" d="M205.62,45.18h45.15V55.83H205.62Zm0,19.49h45.15V75.33H205.62Zm0,19.5h45.15V94.82H205.62Z"/><path class="cls-1" d="M301.86,94.82,289.77,81.3H274.34V72.22h19.27c5.18,0,8.05-3.07,8.05-8.34s-3-8.05-8.05-8.05H268.12v39H257.54V45.12h36.07c11.61,0,18.5,7.18,18.5,18.44,0,8.13-3.82,13.79-10,16.25l14.88,15Z"/><path class="cls-1" d="M342.64,94.82c-14.14,0-24.51-10.92-24.51-25.33,0-14.62,10.37-24.31,24.51-24.31h12.29c14.62,0,24.73,9.9,24.73,24.31s-10.38,25.33-24.73,25.33Zm12.29-10.65A13.58,13.58,0,0,0,369,71.11,10.28,10.28,0,0,0,369,70c0-8.27-5.81-14.21-14.08-14.21H342.64c-8,0-13.86,5.94-13.86,14.21s5.8,14.13,13.86,14.13Z"/></svg>
+    </div>
+    <div class="hdr-divider"></div>
+    <h1 class="hdr-title">Q1 Overall Report<em>.</em></h1>
+    <p class="hdr-desc">Full-funnel · paid spend, web &amp; app acquisition, CRM conversion, market performance · Jan–Mar 2026</p>
+  </div>
+  <div class="hdr-kpis">
+    <div class="hk"><div class="hk-l">Paid Spend</div><div class="hk-v">$134,945</div></div>
+    <div class="hk"><div class="hk-l">Web Users</div><div class="hk-v">212,628</div></div>
+    <div class="hk"><div class="hk-l">App Sessions</div><div class="hk-v">156,724</div></div>
+    <div class="hk"><div class="hk-l">CRM Clients</div><div class="hk-v">15,873</div></div>
+    <div class="hk"><div class="hk-l">FTD</div><div class="hk-v good">2,715</div></div>
+    <div class="hk"><div class="hk-l">Net Deposit</div><div class="hk-v good">$3.79M</div></div>
+  </div>
+</header>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav">
+  <div class="tab active" onclick="go('funnel',this)">Full Funnel</div>
+  <div class="tab" onclick="go('spend',this)">Paid Spend</div>
+  <div class="tab" onclick="go('web',this)">Web Traffic</div>
+  <div class="tab" onclick="go('app',this)">App Traffic</div>
+  <div class="tab" onclick="go('conversion',this)">Conversion</div>
+  <div class="tab" onclick="go('markets',this)">Markets</div>
+  <div class="tab" onclick="go('thoughts',this)">My Thoughts</div>
+  <div class="nav-sep"></div>
+  <span class="nav-tag">Q1 2026 · 26 Mar</span>
+</nav>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════════════
+     FULL FUNNEL
+═══════════════════════════════════════ -->
+<div class="page active" id="page-funnel">
+
+  <div class="sh"><span class="sh-l">Spend → Traffic → Revenue</span><span class="sh-r">web GA4 + app combined · Jan–Mar 2026</span></div>
+
+  <div class="g21" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Full funnel · conversion at each stage</div>
+      <div id="funnel-vis" style="padding:.25rem 0"></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Actual vs benchmark conversion rate</div>
+      <div class="cw h280"><canvas id="c_funnel_comp"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g3" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Revenue by market</div>
+      <div class="cw h200"><canvas id="c_rev_donut"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Web users + App sessions · top markets</div>
+      <div class="cw h200"><canvas id="c_web_app_cmp"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Where the funnel breaks</div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding-top:.125rem">
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:2px">CRM → EV · 31.7% — main bottleneck</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.55">Benchmark is 55–65%. 10,837 registered users never complete KYC. Closing this gap to 45% would add ~1,130 FTDs and ~$1.58M Net Deposit from users already acquired.</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--gd);margin-bottom:2px">EV → FTD · 53.9% — solid</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.55">Once users clear KYC, conversion holds. The problem is volume into EV, not EV→FTD.</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:2px">Attribution · 79% of revenue untracked</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.55">1,971 FTDs and $2.98M Net Deposit sit in the "-" source. Every channel ROI figure from attributed data is systematically understated.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Attribution Gap</span><span class="sh-r">65% of FTD · 79% of Net Deposit has no source</span></div>
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Net Deposit by attribution status</div>
+      <div class="cw h200"><canvas id="c_attr_donut"></canvas></div>
+    </div>
+    <div class="cell" style="display:flex;flex-direction:column;justify-content:center;gap:10px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="background:var(--paper);padding:.625rem;border-radius:2px">
+          <div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin-bottom:3px">Attributed</div>
+          <div style="font-family:var(--disp);font-size:20px;font-weight:700;color:var(--gd)">744 FTD</div>
+          <div style="font-size:10px;color:var(--ink3)">$803K · avg $1,080/FTD</div>
+        </div>
+        <div style="background:var(--rl);padding:.625rem;border-radius:2px">
+          <div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--rd);margin-bottom:3px">Unattributed "-"</div>
+          <div style="font-family:var(--disp);font-size:20px;font-weight:700;color:var(--rd)">1,971 FTD</div>
+          <div style="font-size:10px;color:var(--rd)">$2.98M · avg $1,513/FTD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAID SPEND
+═══════════════════════════════════════ -->
+<div class="page" id="page-spend">
+  <div class="ks n5" style="margin-top:0;border-top:none">
+    <div class="ki"><div class="ki-accent" style="background:var(--ink3)"></div><div class="ki-l">YTD Spend</div><div class="ki-v">$134,945</div><div class="ki-s">Jan–Apr · 11 platforms</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">nelogica ROAS</div><div class="ki-v" style="color:var(--gd)">79.8×</div><div class="ki-s">$6.5K spend → $519K</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">Platforms · 0 FTD</div><div class="ki-v" style="color:var(--rd)">5</div><div class="ki-s">Forex Factory, Myfxbook, Rankia, Global, Triolink</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">Blended CPA</div><div class="ki-v">$194</div><div class="ki-s">$134K ÷ 696 attr. FTD</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">KR-investing ROAS</div><div class="ki-v" style="color:var(--pd)">10.1×</div><div class="ki-s">$10K avg ticket per FTD</div></div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Platform Spend vs Return</span><span class="sh-r">bar width = % of total budget · sorted by Net Deposit</span></div>
+  <div style="background:#fff;padding:.75rem;margin-top:1px">
+    <div class="wf-hd"><div class="wf-h">Platform</div><div class="wf-h">Spend allocation</div><div class="wf-h r">YTD</div><div class="wf-h r">Result</div></div>
+    <div id="wf-container"></div>
+  </div>
+
+  <div class="g2" style="margin-top:1px">
+    <div class="cell"><div class="ct">Spend vs Net Deposit</div><div class="cw h210"><canvas id="c_spend_ndep"></canvas></div></div>
+    <div class="cell"><div class="ct">CPA by platform (funded platforms only)</div><div class="cw h210"><canvas id="c_cpa"></canvas></div></div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Monthly Pacing</span><span class="sh-r">Jan $55.8K peak → May $12.8K forecast</span></div>
+  <div class="g2" style="margin-top:1px">
+    <div class="cell"><div class="ct">Monthly spend</div><div class="cw h170"><canvas id="c_monthly"></canvas></div></div>
+    <div class="cell" style="display:flex;flex-direction:column;justify-content:center;gap:9px">
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--ink)">January spike ($55.8K)</strong> — multiple platforms launched simultaneously with no performance gates between them. KR-investing ($25.8K) and Forex Factory ($10.7K) ran in parallel in the same month.</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--ad)">Forex Factory ($21.3K, Jan–Feb)</strong> — contract ended Feb 20. Zero FTD for the full term. Inherited position, not renewed.</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--b)">Rankia starts Mar ($10.4K/mo)</strong> — attribution unconfirmed. Need to verify UTM chain before April spend continues.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     WEB TRAFFIC
+═══════════════════════════════════════ -->
+<div class="page" id="page-web">
+  <div class="ks n5" style="margin-top:0;border-top:none">
+    <div class="ki"><div class="ki-accent" style="background:var(--b)"></div><div class="ki-l">GA4 Users (Web)</div><div class="ki-v">212,628</div><div class="ki-s">www.zeromarkets.com</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--ink3)"></div><div class="ki-l">Sources tracked</div><div class="ki-v">205</div><div class="ki-s">unique GA4 sources</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">Highest KPU</div><div class="ki-v" style="color:var(--gd)">Bing</div><div class="ki-s">3.88 key events / user</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">Largest source</div><div class="ki-v" style="font-size:15px;font-family:var(--disp)">es-meta</div><div class="ki-s">53,935 users</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">AI Search</div><div class="ki-v">417</div><div class="ki-s">ChatGPT + Gemini · 67–103s eng</div></div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Channel Volume vs Quality</span><span class="sh-r">KPU = Key Events per User — intent proxy</span></div>
+  <div class="g2" style="margin-top:1px">
+    <div class="cell"><div class="ct">Users by channel</div><div class="cw h210"><canvas id="c_web_users"></canvas></div></div>
+    <div class="cell"><div class="ct">Key Events per User (quality score)</div><div class="cw h210"><canvas id="c_web_kpu"></canvas></div></div>
+  </div>
+
+
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Top 12 sources — users, KPU, engagement</div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Source</th><th>Users</th><th>KPU</th><th>Avg Eng</th><th>Channel</th></tr></thead><tbody id="t_web_src"></tbody></table></div>
+    </div>
+    <div class="cell">
+      <div class="ct">AI Search — early signal worth tracking</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62;margin-bottom:10px">ChatGPT.com and Gemini are already sending pre-qualified users. Gemini's 103s avg engagement beats almost every paid placement. This channel compounds over time — publish structured comparison content now.</div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Source</th><th>Users</th><th>KPU</th><th>Avg Eng</th></tr></thead>
+        <tbody>
+          <tr><td>chatgpt.com</td><td>186</td><td>1.49</td><td>62s</td></tr>
+          <tr><td>gemini.google.com</td><td>42</td><td>1.48</td><td>103s</td></tr>
+          <tr><td>perplexity</td><td>1</td><td>—</td><td>26s</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note">These users asked an AI "which CFD broker" and found us — highest intent possible. No ad cost.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     APP TRAFFIC
+═══════════════════════════════════════ -->
+<div class="page" id="page-app">
+  <div class="ks n5" style="margin-top:0;border-top:none">
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">App Sessions</div><div class="ki-v">156,724</div><div class="ki-s">Zero APP · GA4 property</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">Key Events</div><div class="ki-v">274,282</div><div class="ki-s">1.75 KE per session</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">Avg Engagement</div><div class="ki-v" style="color:var(--gd)">~570s</div><div class="ki-s">~9.5 min per session</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--b)"></div><div class="ki-l">App Installs</div><div class="ki-v">6,475</div><div class="ki-s">AppsFlyer · Jan–Mar 25</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">Login Rate</div><div class="ki-v" style="color:var(--ad)">32%</div><div class="ki-s">2,074 logins / 6,475 installs</div></div>
+  </div>
+
+  <div class="sh"><span class="sh-l">App Channel Breakdown</span><span class="sh-r">GA4 app property · Direct 66% · Organic Search 28%</span></div>
+  <div class="g3" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">App sessions by country (top 10)</div>
+      <div id="app_country_bars" style="padding-top:.125rem"></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Sessions by channel</div>
+      <div class="cw h200"><canvas id="c_app_ch_donut"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Avg engagement time per channel (seconds)</div>
+      <div class="cw h200"><canvas id="c_app_eng"></canvas></div>
+    </div>
+  </div>
+
+  <div class="sh"><span class="sh-l">AppsFlyer — Installs &amp; Logins</span><span class="sh-r">99.9% organic · Facebook Ads = 4 installs total</span></div>
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Top install markets — installs vs unique logins</div>
+      <div class="cw h220"><canvas id="c_app_installs"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">App vs Web — same user base, two surfaces</div>
+      <div class="cw h220"><canvas id="c_app_web_cmp"></canvas></div>
+    </div>
+  </div>
+
+  <div style="background:#fff;margin-top:1px;padding:.875rem">
+    <div class="ct">Key observations</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:3px">Brazil dominates both surfaces</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">100,752 app sessions (64%), 584s avg engagement. The app is functionally a Brazil trading tool — same concentration as web and CRM.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Login rate at 32% — needs work</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">6,475 installs, 2,074 unique logins. Two-thirds install and never log in. Build an onboarding push sequence (Day 1 + Day 3) before investing in paid UA.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:3px">99.9% organic — no paid UA yet</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Growth is entirely App Store search and word of mouth. Paid app UA hasn't been built yet — this means session quality is genuine, not inflated by install campaigns.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     CONVERSION
+═══════════════════════════════════════ -->
+<div class="page" id="page-conversion">
+  <div class="ks n5" style="margin-top:0;border-top:none">
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">CRM → EV</div><div class="ki-v" style="color:var(--ad)">31.7%</div><div class="ki-s">benchmark 55–65%</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">EV → FTD</div><div class="ki-v" style="color:var(--gd)">53.9%</div><div class="ki-s">above average</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">KR FTD Rate</div><div class="ki-v" style="color:var(--pd)">28.0%</div><div class="ki-s">best market</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">BR FTD Rate</div><div class="ki-v" style="color:var(--gd)">29.6%</div><div class="ki-s">volume leader</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">LATAM FTD Rate</div><div class="ki-v" style="color:var(--rd)">3.1%</div><div class="ki-s">2,929 clients · $369 avg</div></div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Lead Source Funnel</span><span class="sh-r">CRM attribution data</span></div>
+  <div style="background:#fff;margin-top:1px">
+    <div class="fp" id="fp-conv">
+      <div class="fpill on" onclick="fConv('all',this)">All</div>
+      <div class="fpill" onclick="fConv('funded',this)">Has FTD</div>
+      <div class="fpill" onclick="fConv('high_ev',this)">EV Rate &gt;25%</div>
+      <div class="fpill" onclick="fConv('zero',this)">Zero FTD</div>
+    </div>
+    <div class="tbl-wrap"><table class="tbl" id="t-conv">
+      <thead><tr>
+        <th onclick="sT('t-conv',0)">Lead Source</th>
+        <th onclick="sT('t-conv',1)">Clients</th>
+        <th onclick="sT('t-conv',2)">EV Approved</th>
+        <th onclick="sT('t-conv',3)">EV Rate</th>
+        <th onclick="sT('t-conv',4)">FTD</th>
+        <th onclick="sT('t-conv',5)">FTD Rate</th>
+        <th onclick="sT('t-conv',6)">Net Dep</th>
+        <th onclick="sT('t-conv',7)">Avg / FTD</th>
+        <th onclick="sT('t-conv',8)">EV→FTD</th>
+      </tr></thead>
+      <tbody id="tb-conv"></tbody>
+    </table></div>
+  </div>
+
+  <div class="g2" style="margin-top:1px">
+    <div class="cell"><div class="ct">EV Rate by lead source</div><div class="cw h210"><canvas id="c_ev_rate"></canvas></div></div>
+    <div class="cell"><div class="ct">FTD Rate by lead source</div><div class="cw h210"><canvas id="c_ftd_rate"></canvas></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MARKETS
+═══════════════════════════════════════ -->
+<div class="page" id="page-markets">
+  <div class="ks n5" style="margin-top:0;border-top:none">
+    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">South Korea</div><div class="ki-v" style="color:var(--pd)">62.6%</div><div class="ki-s">of Net Deposit · $10,049/FTD</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">Brazil</div><div class="ki-v" style="color:var(--gd)">36.8%</div><div class="ki-s">of Net Deposit · $938/FTD</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">LATAM</div><div class="ki-v" style="color:var(--ad)">0.5%</div><div class="ki-s">2,929 clients · $369/FTD</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">Zero-revenue region</div><div class="ki-v" style="color:var(--rd)">$0</div><div class="ki-s">Africa + S.Asia + MENA · 2,690 clients</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--b)"></div><div class="ki-l">China/Japan avg</div><div class="ki-v">$4,325</div><div class="ki-s">per FTD · small pool</div></div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Country Performance</span></div>
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Net Deposit by country (top 8)</div>
+      <div id="country_bars" style="padding-top:.25rem"></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Avg deposit per FTD (countries with FTD)</div>
+      <div class="cw h230"><canvas id="c_avg_ticket"></canvas></div>
+    </div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Market Scoreboard</span></div>
+  <div style="background:#fff;margin-top:1px">
+    <div class="fp" id="fp-mkt">
+      <div class="fpill on" onclick="fMkt('all',this)">All</div>
+      <div class="fpill" onclick="fMkt('kr',this)">Korea</div>
+      <div class="fpill" onclick="fMkt('br',this)">Brazil</div>
+      <div class="fpill" onclick="fMkt('latam',this)">LATAM</div>
+      <div class="fpill" onclick="fMkt('funded',this)">Has FTD</div>
+      <div class="fpill" onclick="fMkt('zero',this)">Zero FTD</div>
+    </div>
+    <div class="tbl-wrap"><table class="tbl" id="t-mkt">
+      <thead><tr>
+        <th onclick="sT('t-mkt',0)">Country</th>
+        <th onclick="sT('t-mkt',1)">Region</th>
+        <th onclick="sT('t-mkt',2)">Clients</th>
+        <th onclick="sT('t-mkt',3)">EV Rate</th>
+        <th onclick="sT('t-mkt',4)">FTD</th>
+        <th onclick="sT('t-mkt',5)">FTD Rate</th>
+        <th onclick="sT('t-mkt',6)">Net Dep</th>
+        <th onclick="sT('t-mkt',7)">Avg / FTD</th>
+        <th>Note</th>
+      </tr></thead>
+      <tbody id="tb-mkt"></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MY THOUGHTS
+═══════════════════════════════════════ -->
+<div class="page" id="page-thoughts">
+
+  <!-- top metrics bar — dark -->
+  <div class="stat-band-thoughts" style="background:var(--ink2);display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid rgba(255,255,255,.1);overflow-x:auto">
+    <div style="padding:.625rem 1rem;border-right:1px solid rgba(255,255,255,.1)"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);margin-bottom:4px">Revenue concentration</div><div style="font-family:var(--disp);font-size:24px;font-weight:800;color:#e07060;letter-spacing:-.025em">99.4%</div><div style="font-size:10px;color:rgba(255,255,255,.3)">KR + BR only</div></div>
+    <div style="padding:.625rem 1rem;border-right:1px solid rgba(255,255,255,.1)"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);margin-bottom:4px">Attribution gap</div><div style="font-family:var(--disp);font-size:24px;font-weight:800;color:#e07060;letter-spacing:-.025em">79%</div><div style="font-size:10px;color:rgba(255,255,255,.3)">of revenue untracked</div></div>
+    <div style="padding:.625rem 1rem;border-right:1px solid rgba(255,255,255,.1)"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);margin-bottom:4px">nelogica ROAS</div><div style="font-family:var(--disp);font-size:24px;font-weight:800;color:#5dd49a;letter-spacing:-.025em">79.8×</div><div style="font-size:10px;color:rgba(255,255,255,.3)">$6.5K → $519K</div></div>
+    <div style="padding:.625rem 1rem;border-right:1px solid rgba(255,255,255,.1)"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);margin-bottom:4px">LATAM pipeline</div><div style="font-family:var(--disp);font-size:24px;font-weight:800;color:#f5c05a;letter-spacing:-.025em">485</div><div style="font-size:10px;color:rgba(255,255,255,.3)">EV-approved, unfunded</div></div>
+    <div style="padding:.875rem 1rem"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);margin-bottom:4px">App login rate</div><div style="font-family:var(--disp);font-size:24px;font-weight:800;color:#f5c05a;letter-spacing:-.025em">32%</div><div style="font-size:10px;color:rgba(255,255,255,.3)">2,074 / 6,475 installs</div></div>
+  </div>
+
+  <div class="tc-grid" style="margin-top:1px">
+    
+    <div class="tc">
+      <div class="tc-num">02 · Paid Mix</div>
+      <div class="tc-h r">Forex Factory and Myfxbook delivered zero FTD — redirect that budget</div>
+      <div class="tc-body">Forex Factory $21K + Myfxbook $12K = $33K with no funded clients. Both had GA4 traffic (2,902 and 71 CRM respectively) but zero conversion to deposit. Stop Myfxbook renewal and redirect to nelogica — $9.6 CPA and 79.8× ROAS at a fraction of the current allocation. The math is unambiguous.</div>
+      <div class="tc-tag" style="background:var(--rl);color:var(--rd)">P0 · Immediate</div>
+    </div>
+    <div class="tc">
+      <div class="tc-num">03 · Market Concentration</div>
+      <div class="tc-h a">KR + BR = 99.4% of revenue — two markets, one structural risk</div>
+      <div class="tc-body">Korea at $10,049/FTD and Brazil at $938/FTD are functioning very differently. Korea needs active retention and re-deposit programs — these are high-LTV clients and losing even 10% of the cohort is material. Brazil's funnel works well (29.6% FTD rate) but avg ticket is low. Moving Brazil's avg from $938 to $1,200 with tiered deposit incentives adds ~$615K at current FTD volume.</div>
+      <div class="tc-tag" style="background:var(--al);color:var(--ad)">P1 · 90-day plan</div>
+    </div>
+    <div class="tc">
+      <div class="tc-num">04 · LATAM Activation</div>
+      <div class="tc-h g">485 EV-approved LATAM users are verified and unfunded — already in CRM</div>
+      <div class="tc-body">Colombia 158 EV, Argentina 91, Mexico 60, Ecuador 32 — KYC cleared, never deposited. The acquisition cost is paid. A 3-email sequence (Day 1: platform intro, Day 4: limited bonus, Day 10: trade signal) targeting this cohort could yield ~$67K Net Deposit with zero additional spend. This is the highest-ROI move available right now.</div>
+      <div class="tc-tag" style="background:var(--gl);color:var(--gd)">P1 · Build sequence this week</div>
+    </div>
+    <div class="tc">
+      <div class="tc-num">05 · App</div>
+      <div class="tc-h a">App login rate at 32% — build onboarding before paid UA</div>
+      <div class="tc-body">6,475 installs, 2,074 logins. The app has strong engagement once opened (9.5 min avg session) but two-thirds of installs never log in. A Day 1 + Day 3 push notification sequence addressing first-login friction should be built and measured before investing in paid app install campaigns. Don't pour water into a leaking bucket.</div>
+      <div class="tc-tag" style="background:var(--al);color:var(--ad)">P1 · Onboarding fix Q2</div>
+    </div>
+    <div class="tc">
+      <div class="tc-num">06 · KYC Funnel</div>
+      <div class="tc-h b">CRM → EV at 31.7% — the most valuable improvement available</div>
+      <div class="tc-body">Benchmark is 55–65%. Getting to 45% adds ~2,100 EV users from the existing registered base — at current EV→FTD rates, ~1,130 more FTDs and ~$1.58M Net Deposit. No additional acquisition spend required. Document guidance, progress indicators, and KYC completion reminders in the onboarding flow are the highest-ROI product investment right now.</div>
+      <div class="tc-tag" style="background:var(--bl);color:var(--bd)">P1 · Product + CRM</div>
+    </div>
+    <div class="tc">
+      <div class="tc-num">07 · China / Japan</div>
+      <div class="tc-h p">Small pool, high ticket — worth a controlled test in H2</div>
+      <div class="tc-body">China (1 FTD, $2,885), Japan (1 FTD, $1,000), Greater China cluster avg $4,325/FTD — 4.6× LATAM. Even 20 FTDs from this cluster at current avg adds $86K. The acquisition cost will be higher but the LTV math is compelling. A focused H2 test makes sense once Brazil and Korea programs are stable.</div>
+      <div class="tc-tag" style="background:var(--pl);color:var(--pd)">P2 · H2 test</div>
+    </div>
+    <div class="tc">
+      <div class="tc-num">08 · AI Search</div>
+      <div class="tc-h b">ChatGPT and Gemini traffic is small but shows higher intent than most paid channels</div>
+      <div class="tc-body">417 users, Gemini at 103s avg engagement — among the highest of any source. Users who arrive from AI search have already self-qualified through a research process. This channel grows ~40–60%/year industry-wide. Publishing structured comparison content and broker review pages now is a low-cost, compounding investment. Start Q2.</div>
+      <div class="tc-tag" style="background:var(--bl);color:var(--bd)">P2 · Content Q2</div>
+    </div>
+  </div>
+
+  <div class="sh"><span class="sh-l">Priority Actions</span></div>
+  <div style="background:#fff;margin-top:1px">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>#</th><th>Action</th><th>Rationale</th><th>Effort</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr class="hi"><td style="font-family:var(--disp);font-weight:700">01</td><td>Stop Myfxbook</td><td>0 FTD on $12K across contract period</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">$12K freed</span></td></tr>
+        <tr class="hi"><td style="font-family:var(--disp);font-weight:700">02</td><td>3–5× nelogica budget</td><td>ROAS 79.8×, CPA $9.6 — strongest signal in the mix</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">+$1.5M proj.</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">03</td><td>India / Pakistan compliance check</td><td>1,078 clients, $0 revenue — clarify eligibility</td><td><span class="pill pg">Low</span></td><td><span class="pill pa">Budget clarity</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">04</td><td>LATAM EV activation (3-email sequence)</td><td>485 EV-approved, unfunded — pipeline exists, free</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">~$67K est.</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">05</td><td>App onboarding push sequence</td><td>32% login rate — fix before paid UA investment</td><td><span class="pill pa">Medium</span></td><td><span class="pill pa">Retention</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">06</td><td>Brazil tiered deposit incentive test</td><td>$938 → $1,200 avg ticket = +$615K at current FTD volume</td><td><span class="pill pa">Medium</span></td><td><span class="pill pg">+$615K est.</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">07</td><td>Korea re-deposit + retention campaign</td><td>$10,049 avg ticket — highest LTV cohort we have</td><td><span class="pill pa">Medium</span></td><td><span class="pill pg">High LTV</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// ═══════════════ DATA ═══════════════
+const WEB_CH=[
+  {n:'Meta Ads',u:63267,kpu:1.57,eng:5.1},
+  {n:'Finance Media',u:60366,kpu:1.40,eng:12.3},
+  {n:'Direct',u:51443,kpu:2.89,eng:19.7},
+  {n:'Google',u:28385,kpu:3.33,eng:52.6},
+  {n:'Naver',u:2322,kpu:3.02,eng:54.2},
+  {n:'Bing',u:2019,kpu:3.88,eng:73.5},
+  {n:'Email/CRM',u:1680,kpu:2.41,eng:45.2},
+  {n:'AI Search',u:417,kpu:1.49,eng:67.4},
+  {n:'YouTube',u:153,kpu:5.46,eng:71.6},
+];
+const APP_CH=[
+  {n:'Direct',s:102753,ke:155294,eng:548},
+  {n:'Organic Search',s:44525,ke:75043,eng:597},
+  {n:'Unassigned',s:9010,ke:43438,eng:552},
+  {n:'Organic Social',s:436,ke:507,eng:84},
+];
+const APP_CTRY=[
+  {c:'Brazil',s:100752,ke:187678,eng:585},
+  {c:'South Korea',s:14085,ke:22876,eng:754},
+  {c:'Colombia',s:5951,ke:8613,eng:409},
+  {c:'Mexico',s:3269,ke:5266,eng:448},
+  {c:'Egypt',s:3040,ke:3445,eng:110},
+  {c:'Argentina',s:2002,ke:3309,eng:429},
+  {c:'Pakistan',s:1941,ke:2412,eng:131},
+  {c:'India',s:1926,ke:3217,eng:183},
+  {c:'Paraguay',s:1312,ke:1699,eng:249},
+  {c:'Peru',s:1226,ke:1836,eng:328},
+];
+const INSTALLS=[
+  {c:'Brazil',i:3238,l:1356},{c:'South Korea',i:337,l:91},
+  {c:'India',i:322,l:61},{c:'Egypt',i:318,l:56},
+  {c:'Colombia',i:221,l:39},{c:'Pakistan',i:208,l:50},
+  {c:'United States',i:169,l:64},{c:'Mexico',i:162,l:17},
+];
+const PLATFORMS=[
+  {n:'nelogica',ytd:6500,ftd:679,ndep:519007},
+  {n:'KR-investing',ytd:25833,ftd:13,ndep:260667},
+  {n:'Forex Factory',ytd:21342,ftd:0,ndep:0},
+  {n:'Investing BR',ytd:12070,ftd:4,ndep:3692},
+  {n:'Myfxbook',ytd:12303,ftd:0,ndep:0},
+  {n:'Rankia',ytd:31128,ftd:0,ndep:0},
+  {n:'Triolink DSP',ytd:11800,ftd:0,ndep:0},
+  {n:'Investing Global',ytd:30000,ftd:0,ndep:0},
+  {n:'Investing KR CPM',ytd:10086,ftd:0,ndep:0},
+];
+const CRM=[
+  {s:'nelogica',cl:2539,ev:1236,ftd:679,dep:719503,ndep:519007},
+  {s:'KR-investing',cl:172,ev:49,ftd:13,dep:312092,ndep:260667},
+  {s:'es-meta',cl:1665,ev:175,ftd:6,dep:797,ndep:-37},
+  {s:'BR-IF',cl:64,ev:34,ftd:16,dep:5890,ndep:3056},
+  {s:'ko-meta',cl:74,ev:21,ftd:3,dep:6334,ndep:6334},
+  {s:'es-if',cl:31,ev:16,ftd:10,dep:7721,ndep:7721},
+  {s:'hs_email',cl:140,ev:14,ftd:4,dep:1987,ndep:1771},
+  {s:'br-investing',cl:29,ev:9,ftd:4,dep:3989,ndep:3692},
+  {s:'facebook',cl:227,ev:14,ftd:0,dep:0,ndep:0},
+  {s:'es-wf',cl:107,ev:17,ftd:1,dep:111,ndep:111},
+  {s:'en-forexfactory',cl:101,ev:18,ftd:0,dep:0,ndep:0},
+  {s:'ko-investing',cl:35,ev:6,ftd:1,dep:483,ndep:483},
+];
+const COUNTRIES=[
+  {c:'Brazil',r:'Brazil',cl:7828,ev:3857,ftd:2321,dep:2177971,ndep:1394196,note:''},
+  {c:'South Korea',r:'Korea',cl:1024,ev:565,ftd:287,dep:2884089,ndep:2372207,note:''},
+  {c:'Colombia',r:'LATAM',cl:811,ev:158,ftd:37,dep:10568,ndep:7430,note:''},
+  {c:'India',r:'S.Asia',cl:616,ev:0,ftd:0,dep:0,ndep:0,note:'Compliance review'},
+  {c:'Argentina',r:'LATAM',cl:607,ev:91,ftd:11,dep:8055,ndep:5812,note:''},
+  {c:'Pakistan',r:'S.Asia',cl:462,ev:5,ftd:0,dep:0,ndep:0,note:'Compliance review'},
+  {c:'Egypt',r:'MENA',cl:426,ev:3,ftd:0,dep:0,ndep:0,note:''},
+  {c:'Mexico',r:'LATAM',cl:400,ev:60,ftd:10,dep:2881,ndep:1393,note:''},
+  {c:'Peru',r:'LATAM',cl:349,ev:44,ftd:5,dep:1735,ndep:423,note:''},
+  {c:'South Africa',r:'Africa',cl:311,ev:0,ftd:0,dep:0,ndep:0,note:'Regulatory pause'},
+  {c:'Paraguay',r:'LATAM',cl:311,ev:33,ftd:5,dep:465,ndep:103,note:''},
+  {c:'New Zealand',r:'NZ',cl:163,ev:20,ftd:3,dep:0,ndep:0,note:''},
+  {c:'Chile',r:'LATAM',cl:61,ev:27,ftd:12,dep:4644,ndep:3364,note:''},
+  {c:'Ecuador',r:'LATAM',cl:140,ev:32,ftd:3,dep:209,ndep:154,note:''},
+  {c:'Dominican Rep.',r:'LATAM',cl:25,ev:7,ftd:5,dep:5046,ndep:162,note:''},
+  {c:'China',r:'China/JP',cl:14,ev:4,ftd:1,dep:2885,ndep:2885,note:''},
+  {c:'Japan',r:'China/JP',cl:44,ev:3,ftd:1,dep:1000,ndep:1000,note:''},
+  {c:'Switzerland',r:'Europe',cl:11,ev:1,ftd:1,dep:1000,ndep:1000,note:''},
+  {c:'Nigeria',r:'Africa',cl:148,ev:0,ftd:0,dep:0,ndep:0,note:''},
+  {c:'Netherlands',r:'Europe',cl:113,ev:0,ftd:0,dep:0,ndep:0,note:'ESMA restriction'},
+  {c:'Germany',r:'Europe',cl:77,ev:0,ftd:0,dep:0,ndep:0,note:'ESMA restriction'},
+];
+const RCOL={Brazil:'#129c5e',Korea:'#5535b8',LATAM:'#b56d0a','S.Asia':'#c83b1e',Africa:'#888',MENA:'#b56d0a',Europe:'#1a52be','China/JP':'#c83b1e',NZ:'#2090b8'};
+const G={g:'#129c5e',r:'#c83b1e',a:'#b56d0a',b:'#1a52be',p:'#5535b8'};
+const ink='#111009',ink3='#8c8880';
+const cF={family:'DM Sans',size:9};
+const cO={responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{backgroundColor:ink,titleFont:cF,bodyFont:cF,padding:8,cornerRadius:2}},
+  scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:cF,color:ink3}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:cF,color:ink3}}}};
+
+function usd(v){if(!v||v===0)return'$0';const n=v<0;const a=Math.abs(v);const s=a>=1e6?'$'+(a/1e6).toFixed(2)+'M':a>=1e3?'$'+Math.round(a/1e3)+'K':'$'+Math.round(a);return n?'-'+s:s}
+
+// ═══════════════ FUNNEL VIS ═══════════════
+function buildFunnel(){
+  const steps=[
+    {l:'Paid Spend',v:'$134,945',pct:100,col:G.b,note:'YTD'},
+    {l:'Web Users',v:'212,628',pct:100,col:'#888',note:'web GA4'},
+    {l:'App Sessions',v:'156,724',pct:74,col:G.a,note:'app GA4'},
+    {l:'CRM Clients',v:'15,873',pct:7.5,col:'#b56d0a',note:'7.5% of web'},
+    {l:'EV Approved',v:'5,036',pct:31.7,col:G.p,note:'31.7% of CRM'},
+    {l:'FTD',v:'2,715',pct:53.9,col:G.g,note:'53.9% of EV'},
+    {l:'Net Deposit',v:'$3.79M',pct:100,col:G.g,note:'ROAS 28.1×'},
+  ];
+  const drops=[null,'↓ 92.5% bounce without registering','↓ separate surface — parallel, not sequential','↓ 68.3% lost at KYC stage','↓ 46.1% EV users don\'t deposit',null];
+  document.getElementById('funnel-vis').innerHTML=steps.map((s,i)=>`
+    <div class="fn-row">
+      <div class="fn-lbl">${s.l}</div>
+      <div class="fn-wrap">
+        <div class="fn-bg"><div class="fn-fill" style="width:${Math.max(s.pct,3)}%;background:${s.col}">${s.v}</div></div>
+        <div class="fn-meta">${s.note}</div>
+      </div>
+    </div>
+    ${drops[i]?`<div class="fn-drop">${drops[i]}</div>`:''}`).join('');
+}
+
+// ═══════════════ WATERFALL ═══════════════
+function buildWF(){
+  const sorted=[...PLATFORMS].filter(p=>p.ytd>0).sort((a,b)=>b.ndep-a.ndep);
+  const mx=Math.max(...sorted.map(p=>p.ytd));
+  document.getElementById('wf-container').innerHTML=sorted.map(p=>{
+    const pct=(p.ytd/mx*100).toFixed(0);
+    const roi=p.ftd>0?p.ndep/p.ytd:0;
+    const bc=roi>10?G.g:roi>1?G.b:roi>0?G.a:G.r;
+    const cls=p.ftd>0?'ok':p.n==='Rankia'?'w':'z';
+    const res=p.ftd>0?`${p.ftd} FTD · ${usd(p.ndep)} · ${roi.toFixed(1)}×`:'0 FTD';
+    return`<div class="wf-row"><div class="wf-n">${p.n}</div><div class="wf-bg"><div class="wf-f" style="width:${pct}%;background:${bc}">${pct>15?usd(p.ytd):''}</div></div><div class="wf-amt">${pct<=15?usd(p.ytd):''}</div><div class="wf-res ${cls}">${res}</div></div>`;
+  }).join('');
+}
+
+// ═══════════════ INLINE BARS ═══════════════
+function buildCountryBars(){
+  const top=COUNTRIES.filter(d=>d.ndep>0).sort((a,b)=>b.ndep-a.ndep).slice(0,8);
+  const mx=top[0].ndep;
+  document.getElementById('country_bars').innerHTML=top.map(d=>`<div class="ibr"><div class="ibr-l">${d.c}</div><div class="ibr-bg"><div class="ibr-f" style="width:${(d.ndep/mx*100).toFixed(0)}%;background:${RCOL[d.r]||'#888'}">${d.ndep>1e6?usd(d.ndep):''}</div></div><div class="ibr-v">${usd(d.ndep)}</div></div>`).join('');
+}
+function buildAppBars(){
+  const mx=APP_CTRY[0].s;
+  document.getElementById('app_country_bars').innerHTML=APP_CTRY.map(d=>`<div class="ibr"><div class="ibr-l">${d.c}</div><div class="ibr-bg"><div class="ibr-f" style="width:${(d.s/mx*100).toFixed(0)}%;background:#b56d0a99">${d.s>10000?Math.round(d.s/1000)+'K':''}</div></div><div class="ibr-v">${d.s>=1000?(d.s/1000).toFixed(0)+'K':d.s}</div></div>`).join('');
+}
+
+// ═══════════════ CHARTS ═══════════════
+function charts(){
+  // Funnel comparison
+  new Chart(document.getElementById('c_funnel_comp'),{type:'bar',data:{
+    labels:['GA4→CRM','CRM→EV','EV→FTD'],
+    datasets:[
+      {label:'Actual',data:[7.5,31.7,53.9],backgroundColor:[G.a+'99',G.r+'99',G.g+'99'],borderRadius:1},
+      {label:'Benchmark',data:[8,60,55],backgroundColor:'rgba(0,0,0,0.07)',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v+'%'}}}}});
+
+  // Rev donut
+  new Chart(document.getElementById('c_rev_donut'),{type:'doughnut',data:{
+    labels:['South Korea','Brazil','LATAM','Other'],
+    datasets:[{data:[2372207,1394196,19076,4321],backgroundColor:[G.p,G.g,G.a,'#ccc'],borderWidth:1,borderColor:'#f6f5f1'}]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:true,position:'right',labels:{font:cF,color:ink3,boxWidth:8,padding:5}},tooltip:{backgroundColor:ink,callbacks:{label:ctx=>`${ctx.label}: ${usd(ctx.raw)}`},titleFont:cF,bodyFont:cF}}}});
+
+  // Web + App country
+  const topC=['Brazil','South Korea','Colombia','Mexico','Argentina'];
+  new Chart(document.getElementById('c_web_app_cmp'),{type:'bar',data:{
+    labels:topC,
+    datasets:[
+      {label:'Web users (~)',data:[100000,5100,2600,1500,1200],backgroundColor:G.b+'66',borderRadius:1},
+      {label:'App sessions',data:[100752,14085,5951,3269,2002],backgroundColor:G.a+'99',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // Attr donut
+  new Chart(document.getElementById('c_attr_donut'),{type:'doughnut',data:{
+    labels:['Unattributed "-"','nelogica','KR-investing','Other attr.'],
+    datasets:[{data:[2980505,519007,260667,23207],backgroundColor:[G.r+'88',G.g,G.p,G.b+'88'],borderWidth:1,borderColor:'#f6f5f1'}]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{display:true,position:'right',labels:{font:cF,color:ink3,boxWidth:8,padding:4}},tooltip:{backgroundColor:ink,callbacks:{label:ctx=>`${ctx.label}: ${usd(ctx.raw)}`},titleFont:cF,bodyFont:cF}}}});
+
+  // Web users
+  new Chart(document.getElementById('c_web_users'),{type:'bar',data:{
+    labels:WEB_CH.map(d=>d.n),
+    datasets:[{data:WEB_CH.map(d=>d.u),backgroundColor:G.b+'66',borderRadius:1}]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` ${ctx.raw.toLocaleString()} users`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // Web KPU
+  new Chart(document.getElementById('c_web_kpu'),{type:'bar',data:{
+    labels:WEB_CH.map(d=>d.n),
+    datasets:[{data:WEB_CH.map(d=>d.kpu),backgroundColor:WEB_CH.map(d=>d.kpu>=3?G.g+'99':d.kpu>=2?G.b+'99':G.a+'77'),borderRadius:1}]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` KPU: ${ctx.raw}`}}}}});
+
+  // Web bubble
+  const BCOLS=[G.b,G.a,'#888',G.g,G.p,G.g,G.b,G.p,G.r];
+
+  // App channel donut
+  new Chart(document.getElementById('c_app_ch_donut'),{type:'doughnut',data:{
+    labels:APP_CH.map(d=>d.n),
+    datasets:[{data:APP_CH.map(d=>d.s),backgroundColor:[G.b,G.g,G.a+'88','#ccc'],borderWidth:1,borderColor:'#f6f5f1'}]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{display:true,position:'right',labels:{font:cF,color:ink3,boxWidth:8,padding:5}},tooltip:{backgroundColor:ink,callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw.toLocaleString()}`},titleFont:cF,bodyFont:cF}}}});
+
+  // App engagement
+  new Chart(document.getElementById('c_app_eng'),{type:'bar',data:{
+    labels:APP_CH.map(d=>d.n),
+    datasets:[{data:APP_CH.map(d=>d.eng),backgroundColor:APP_CH.map(d=>d.eng>500?G.g+'99':d.eng>200?G.b+'99':G.a+'66'),borderRadius:1}]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` ${ctx.raw}s avg`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>v+'s'}}}}});
+
+  // App installs
+  new Chart(document.getElementById('c_app_installs'),{type:'bar',data:{
+    labels:INSTALLS.map(d=>d.c),
+    datasets:[
+      {label:'Installs',data:INSTALLS.map(d=>d.i),backgroundColor:G.b+'66',borderRadius:1},
+      {label:'Logins',data:INSTALLS.map(d=>d.l),backgroundColor:G.g+'99',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // App vs web
+  const shC=['Brazil','S. Korea','Colombia','Mexico','Argentina','Egypt'];
+  new Chart(document.getElementById('c_app_web_cmp'),{type:'bar',data:{
+    labels:shC,
+    datasets:[
+      {label:'Web users (~)',data:[100000,5100,2600,1500,1200,1200],backgroundColor:G.b+'55',borderRadius:1},
+      {label:'App sessions',data:[100752,14085,5951,3269,2002,3040],backgroundColor:G.a+'99',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // Spend vs ndep
+  const pw=PLATFORMS.filter(p=>p.ytd>0);
+  new Chart(document.getElementById('c_spend_ndep'),{type:'bar',data:{
+    labels:pw.map(p=>p.n.length>11?p.n.slice(0,11)+'…':p.n),
+    datasets:[
+      {label:'Spend',data:pw.map(p=>p.ytd),backgroundColor:G.b+'66',borderRadius:1},
+      {label:'Net Dep',data:pw.map(p=>p.ndep),backgroundColor:G.g+'88',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>usd(v)}}}}});
+
+  // CPA
+  const wf=PLATFORMS.filter(p=>p.ftd>0);
+  new Chart(document.getElementById('c_cpa'),{type:'bar',data:{
+    labels:wf.map(p=>p.n),
+    datasets:[{data:wf.map(p=>+(p.ytd/p.ftd).toFixed(0)),backgroundColor:wf.map(p=>{const c=p.ytd/p.ftd;return c<100?G.g+'99':c<1500?G.b+'99':G.a+'99'}),borderRadius:1}]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` CPA: ${usd(ctx.raw)}`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>usd(v)}}}}});
+
+  // Monthly
+  new Chart(document.getElementById('c_monthly'),{type:'bar',data:{
+    labels:['JAN','FEB','MAR','APR','MAY'],
+    datasets:[{data:[55788,25014,16336,28098,12836],backgroundColor:[G.r+'88',G.a+'88',G.b+'88',G.a+'88',G.g+'88'],borderRadius:1}]
+  },options:{...cO,plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` ${usd(ctx.raw)}`}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>usd(v)}}}}});
+
+  // EV rate
+  const evs=CRM.filter(d=>d.cl>=10).sort((a,b)=>b.ev/b.cl-a.ev/a.cl);
+  new Chart(document.getElementById('c_ev_rate'),{type:'bar',data:{
+    labels:evs.map(d=>d.s.length>12?d.s.slice(0,12)+'…':d.s),
+    datasets:[{data:evs.map(d=>+(d.ev/d.cl*100).toFixed(1)),backgroundColor:evs.map(d=>{const r=d.ev/d.cl;return r>0.4?G.g+'99':r>0.15?G.b+'99':G.r+'77'}),borderRadius:1}]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` EV: ${ctx.raw}%`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>v+'%'}}}}});
+
+  // FTD rate
+  const fts=CRM.filter(d=>d.cl>=5).sort((a,b)=>b.ftd/b.cl-a.ftd/a.cl);
+  new Chart(document.getElementById('c_ftd_rate'),{type:'bar',data:{
+    labels:fts.map(d=>d.s.length>12?d.s.slice(0,12)+'…':d.s),
+    datasets:[{data:fts.map(d=>+(d.ftd/d.cl*100).toFixed(1)),backgroundColor:fts.map(d=>{const r=d.ftd/d.cl;return r>0.2?G.g+'99':r>0.05?G.b+'99':r>0?G.a+'77':G.r+'55'}),borderRadius:1}]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` FTD: ${ctx.raw}%`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>v+'%'}}}}});
+
+  // Avg ticket
+  const at=COUNTRIES.filter(d=>d.ftd>0).map(d=>({c:d.c,avg:d.dep/d.ftd})).sort((a,b)=>b.avg-a.avg).slice(0,9);
+  new Chart(document.getElementById('c_avg_ticket'),{type:'bar',data:{
+    labels:at.map(d=>d.c.length>12?d.c.slice(0,12)+'…':d.c),
+    datasets:[{data:at.map(d=>+d.avg.toFixed(0)),backgroundColor:at.map(d=>d.avg>5000?G.p+'99':d.avg>1000?G.b+'99':G.g+'88'),borderRadius:1}]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` $${ctx.raw.toLocaleString()} / FTD`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>usd(v)}}}}});
+}
+
+// ═══════════════ WEB SOURCES TABLE ═══════════════
+function buildWebSrc(){
+  const src=[
+    {s:'es-meta',u:53935,kpu:1.39,eng:'5s',t:'Meta Ads'},
+    {s:'(direct)',u:51443,kpu:2.89,eng:'20s',t:'Direct'},
+    {s:'google',u:28385,kpu:3.33,eng:'53s',t:'Search'},
+    {s:'ko-investing',u:25097,kpu:1.34,eng:'4s',t:'Finance Media'},
+    {s:'br-investing',u:20817,kpu:1.27,eng:'8s',t:'Finance Media'},
+    {s:'ko-meta',u:8449,kpu:2.74,eng:'6s',t:'Meta Ads'},
+    {s:'KR-investing',u:6206,kpu:1.16,eng:'29s',t:'Finance Media'},
+    {s:'bing',u:2019,kpu:3.88,eng:'73s',t:'Search'},
+    {s:'nelogica',u:1900,kpu:3.19,eng:'17s',t:'Finance Media'},
+    {s:'hs_email',u:1344,kpu:2.08,eng:'51s',t:'Email'},
+    {s:'naver',u:1059,kpu:2.85,eng:'65s',t:'Search'},
+    {s:'BR-IF',u:978,kpu:3.97,eng:'81s',t:'Finance Media'},
+  ];
+  document.getElementById('t_web_src').innerHTML=src.map(d=>`<tr>
+    <td>${d.s}</td><td>${d.u.toLocaleString()}</td>
+    <td><span class="${d.kpu>=3?'hot':d.kpu>=2?'mid':'low'}">${d.kpu}</span></td>
+    <td>${d.eng}</td><td><span class="pill pn">${d.t}</span></td>
+  </tr>`).join('');
+}
+
+// ═══════════════ CONVERSION TABLE ═══════════════
+function buildConv(f='all'){
+  let rows=[...CRM];
+  if(f==='funded') rows=rows.filter(d=>d.ftd>0);
+  else if(f==='high_ev') rows=rows.filter(d=>d.ev/d.cl>0.25);
+  else if(f==='zero') rows=rows.filter(d=>d.ftd===0);
+  rows.sort((a,b)=>b.cl-a.cl);
+  const mx=Math.max(...rows.map(d=>d.cl));
+  document.getElementById('tb-conv').innerHTML=rows.map(d=>{
+    const er=d.ev/d.cl,fr=d.ftd/d.cl,e2f=d.ev>0?d.ftd/d.ev:0,avg=d.ftd>0?d.dep/d.ftd:0;
+    return`<tr class="${d.ftd>0?'hi':'lo'}">
+      <td><strong>${d.s}</strong></td><td>${d.cl}</td><td>${d.ev}</td>
+      <td><span class="${er>0.4?'hot':er>0.15?'mid':er>0?'low':'na'}">${(er*100).toFixed(1)}%</span></td>
+      <td><strong>${d.ftd||'—'}</strong></td>
+      <td><span class="${fr>0.2?'hot':fr>0.05?'mid':fr>0?'low':'na'}">${d.ftd>0?(fr*100).toFixed(1)+'%':'—'}</span></td>
+      <td>${d.ndep!==0?usd(d.ndep):'—'}</td>
+      <td>${avg>0?usd(avg):'—'}</td>
+      <td>${e2f>0?(e2f*100).toFixed(0)+'%':'—'}</td>
+    </tr>`;
+  }).join('');
+}
+function fConv(f,el){document.querySelectorAll('#fp-conv .fpill').forEach(p=>p.classList.remove('on'));el.classList.add('on');buildConv(f)}
+
+// ═══════════════ MARKET TABLE ═══════════════
+function buildMkt(f='all'){
+  let rows=[...COUNTRIES];
+  if(f==='kr') rows=rows.filter(d=>d.r==='Korea');
+  else if(f==='br') rows=rows.filter(d=>d.r==='Brazil');
+  else if(f==='latam') rows=rows.filter(d=>d.r==='LATAM');
+  else if(f==='funded') rows=rows.filter(d=>d.ftd>0);
+  else if(f==='zero') rows=rows.filter(d=>d.ftd===0);
+  rows.sort((a,b)=>b.cl-a.cl);
+  const mx=Math.max(...rows.map(d=>d.cl));
+  document.getElementById('tb-mkt').innerHTML=rows.map(d=>{
+    const er=d.ev/d.cl,fr=d.ftd/d.cl,avg=d.ftd>0?d.dep/d.ftd:0,neg=d.ndep<0;
+    return`<tr class="${d.ftd===0?'lo':''}">
+      <td><strong>${d.c}</strong></td>
+      <td><span class="pill pn">${d.r}</span></td>
+      <td>${d.cl}</td>
+      <td><span class="${er>0.4?'hot':er>0.15?'mid':er>0?'low':'na'}">${(er*100).toFixed(1)}%</span></td>
+      <td><strong>${d.ftd||'—'}</strong></td>
+      <td><span class="${fr>0.2?'hot':fr>0.05?'mid':fr>0?'low':'na'}">${d.ftd>0?(fr*100).toFixed(1)+'%':'—'}</span></td>
+      <td class="${neg?'low':''}">${d.ndep!==0?usd(d.ndep):'—'}</td>
+      <td>${avg>0?usd(avg):'—'}</td>
+      <td>${d.note?`<span class="pill pa">${d.note}</span>`:'—'}</td>
+    </tr>`;
+  }).join('');
+}
+function fMkt(f,el){document.querySelectorAll('#fp-mkt .fpill').forEach(p=>p.classList.remove('on'));el.classList.add('on');buildMkt(f)}
+
+// ═══════════════ SORT ═══════════════
+const ST={};
+function sT(id,col){
+  const tbl=document.getElementById(id);if(!tbl)return;
+  const tb=tbl.querySelector('tbody');
+  const rows=Array.from(tb.querySelectorAll('tr'));
+  const th=tbl.querySelectorAll('th')[col];
+  const prev=ST[id];const asc=!(prev&&prev.col===col&&prev.asc);
+  ST[id]={col,asc};
+  tbl.querySelectorAll('th').forEach(t=>t.classList.remove('asc','desc'));
+  th.classList.add(asc?'asc':'desc');
+  rows.sort((a,b)=>{
+    const av=(a.cells[col]?.innerText||'').replace(/[$,KMx×%∞↑↓→—]/g,'').trim();
+    const bv=(b.cells[col]?.innerText||'').replace(/[$,KMx×%∞↑↓→—]/g,'').trim();
+    const an=parseFloat(av),bn=parseFloat(bv);
+    if(!isNaN(an)&&!isNaN(bn))return asc?an-bn:bn-an;
+    return asc?av.localeCompare(bv):bv.localeCompare(av);
+  });
+  rows.forEach(r=>tb.appendChild(r));
+}
+
+// ═══════════════ NAV ═══════════════
+function go(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+window.onload=()=>{
+  buildFunnel();buildWF();buildCountryBars();buildAppBars();
+  charts();buildWebSrc();buildConv();buildMkt();
+};
+</script>
+</body>
+</html>
