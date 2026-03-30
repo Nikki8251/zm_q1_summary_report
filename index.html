@@ -590,6 +590,55 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
       <tbody id="tb-mkt"></tbody>
     </table></div>
   </div>
+
+  <div class="sh"><span class="sh-l">Net Deposit by Platform</span><span class="sh-r">trading platform breakdown · BlackArrow / MT5 / MT4 / APP</span></div>
+
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Platform mix · % of total net deposit</div>
+      <div class="cw h220"><canvas id="c_platform_donut"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Avg net deposit per FTD by platform</div>
+      <div class="cw h220"><canvas id="c_plat_br_kr"></canvas></div>
+    </div>
+  </div>
+
+  <div style="background:#fff;margin-top:1px;padding:.875rem">
+    <div class="ct">Platform observations</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:3px">BlackArrow dominates in FTD volume, not avg ticket</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">BlackArrow drives 57.7% of all FTDs (1,655 users) but only $3,422 avg ticket. MT4 is the opposite — 7.9% of FTDs but $8,190 avg ticket, the highest of any platform. MT5 at $6,869 is also significantly ahead of BlackArrow. Volume ≠ value here.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Korea APP: 18 FTDs, $3,944 avg — clear opportunity</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Korea MT5 avg ticket is $20,126 and MT4 is $13,193 — the highest in the entire dataset. Korea APP users average $3,944 but there are only 18 of them. A targeted campaign to move Korean desktop traders to the app could yield disproportionate returns.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:3px">APP avg ticket ($1,561) is 5× below MT4 — structural gap</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">APP platform: 353 FTDs, $1,561 avg ticket. MT4: 226 FTDs, $8,190 avg. The app is acquiring more users but at much lower deposit value. Whether this is a UX issue, audience mix, or product limitation needs investigation before scaling app UA.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="sh"><span class="sh-l">Platform × Country FTD Detail</span><span class="sh-r">FTD count · net deposit · avg ticket per FTD</span></div>
+  <div style="background:#fff;margin-top:1px">
+    <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr>
+        <th>Country</th><th>Platform</th>
+        <th onclick="sT('t-plat',2)">FTD Users</th>
+        <th onclick="sT('t-plat',3)">FTD %</th>
+        <th onclick="sT('t-plat',4)">Net Deposit</th>
+        <th onclick="sT('t-plat',5)">Avg / FTD</th>
+      </tr></thead>
+      <tbody id="tb-plat"></tbody>
+    </table>
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══════════════════════════════════════
@@ -909,6 +958,33 @@ function charts(){
     datasets:[{data:wf.map(p=>+(p.ytd/p.ftd).toFixed(0)),backgroundColor:wf.map(p=>{const c=p.ytd/p.ftd;return c<100?G.g+'99':c<1500?G.b+'99':G.a+'99'}),borderRadius:1}]
   },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` CPA: ${usd(ctx.raw)}`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>usd(v)}}}}});
 
+
+  // Platform donut
+  new Chart(document.getElementById('c_platform_donut'),{type:'doughnut',data:{
+    labels:['BlackArrow','MT5','MT4','APP','Investing'],
+    datasets:[{data:[5677320,4368972,2181904,553255,8150],
+      backgroundColor:[G.g,G.p,G.b,G.a+'99','#ccc'],borderWidth:1,borderColor:'#f6f5f1'}]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{
+    legend:{display:true,position:'right',labels:{font:cF,color:ink3,boxWidth:8,padding:5}},
+    tooltip:{backgroundColor:ink,callbacks:{label:ctx=>`${ctx.label}: ${usd(ctx.raw)}`},titleFont:cF,bodyFont:cF}
+  }}});
+
+  // Avg ticket by platform — key insight
+  new Chart(document.getElementById('c_plat_br_kr'),{type:'bar',data:{
+    labels:['MT4','MT5','BlackArrow','APP','Investing'],
+    datasets:[{
+      label:'Avg ticket / FTD',
+      data:[8190,6869,3422,1561,2037],
+      backgroundColor:[G.p+'99',G.b+'99',G.g+'99',G.a+'99','#ccc'],
+      borderRadius:1
+    }]
+  },options:{...cO,
+    plugins:{...cO.plugins,
+      legend:{display:false},
+      tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` $${ctx.raw.toLocaleString()} avg/FTD`}}
+    },
+    scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>usd(v)}}}}});
+
   // Monthly
   new Chart(document.getElementById('c_monthly'),{type:'bar',data:{
     labels:['JAN','FEB','MAR'],
@@ -1040,9 +1116,63 @@ function go(id,el){
   el.classList.add('active');
 }
 
+
+  // Platform FTD data
+  const PLAT_FTD=[
+    {c:'BR',p:'BlackArrow',ftd:1637,ndep:5651518},
+    {c:'BR',p:'MT5',ftd:424,ndep:1176347},
+    {c:'BR',p:'APP',ftd:305,ndep:471954},
+    {c:'KR',p:'MT5',ftd:154,ndep:3099392},
+    {c:'KR',p:'MT4',ftd:130,ndep:1715121},
+    {c:'BR',p:'MT4',ftd:62,ndep:103096},
+    {c:'KR',p:'APP',ftd:18,ndep:70989},
+    {c:'CO',p:'MT4',ftd:16,ndep:874},
+    {c:'CL',p:'MT5',ftd:12,ndep:18288},
+    {c:'CO',p:'MT5',ftd:12,ndep:12946},
+    {c:'AR',p:'MT5',ftd:9,ndep:5151},
+    {c:'CO',p:'BlackArrow',ftd:7,ndep:3378},
+    {c:'CO',p:'APP',ftd:7,ndep:639},
+    {c:'MX',p:'APP',ftd:5,ndep:4105},
+    {c:'MN',p:'APP',ftd:5,ndep:2361},
+    {c:'AR',p:'BlackArrow',ftd:4,ndep:0},
+    {c:'BR',p:'Investing',ftd:4,ndep:8150},
+    {c:'MX',p:'MT4',ftd:4,ndep:0},
+    {c:'CL',p:'BlackArrow',ftd:3,ndep:1545},
+    {c:'MN',p:'MT4',ftd:3,ndep:0},
+    {c:'PE',p:'MT5',ftd:3,ndep:0},
+    {c:'NZ',p:'APP',ftd:3,ndep:0},
+    {c:'PY',p:'APP',ftd:3,ndep:0},
+    {c:'PY',p:'MT5',ftd:3,ndep:0},
+    {c:'DO',p:'MT5',ftd:3,ndep:0},
+    {c:'EC',p:'MT4',ftd:2,ndep:144},
+    {c:'MX',p:'MT5',ftd:2,ndep:0},
+    {c:'MX',p:'BlackArrow',ftd:2,ndep:0},
+    {c:'PE',p:'BlackArrow',ftd:2,ndep:0},
+    {c:'UY',p:'MT4',ftd:2,ndep:0},
+  ];
+  const TOTAL_FTD_PLAT = PLAT_FTD.reduce((s,d)=>s+d.ftd,0);
+  function buildPlatTable(){
+    const tb = document.getElementById('tb-plat');
+    if(!tb) return;
+    const sorted = [...PLAT_FTD].sort((a,b)=>b.ftd-a.ftd);
+    tb.innerHTML = sorted.map(d=>{
+      const avg = d.ftd>0 && d.ndep>0 ? d.ndep/d.ftd : 0;
+      const isHi = (d.c==='KR'&&d.p==='MT5')||(d.c==='KR'&&d.p==='MT4');
+      const isTop = d.c==='BR'&&d.p==='BlackArrow';
+      return `<tr class="${isHi?'hi':isTop?'hi':''}">
+        <td><strong>${d.c}</strong></td>
+        <td><span class="pill pn">${d.p}</span></td>
+        <td><strong>${d.ftd}</strong></td>
+        <td>${(d.ftd/TOTAL_FTD_PLAT*100).toFixed(1)}%</td>
+        <td>${d.ndep>0?usd(d.ndep):'—'}</td>
+        <td><span class="${avg>10000?'hot':avg>3000?'mid':avg>0?'':'na'}">${avg>0?usd(avg):'—'}</span></td>
+      </tr>`;
+    }).join('');
+  }
+
 window.onload=()=>{
   buildFunnel();buildWF();buildCountryBars();buildAppBars();
-  charts();buildWebSrc();buildConv();buildMkt();
+  charts();buildWebSrc();buildConv();buildMkt();buildPlatTable();
 };
 </script>
 
