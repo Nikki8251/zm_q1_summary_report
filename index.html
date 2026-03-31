@@ -276,9 +276,9 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
   <div class="hdr-kpis">
     <div class="hk"><div class="hk-l">Paid Spend</div><div class="hk-v">$97,138</div></div>
     <div class="hk"><div class="hk-l">Web Users</div><div class="hk-v">212,628</div></div>
-    <div class="hk"><div class="hk-l">App Installs</div><div class="hk-v">6,554</div></div>
-    <div class="hk"><div class="hk-l">CRM Clients</div><div class="hk-v">15,873</div></div>
-    <div class="hk"><div class="hk-l">FTD</div><div class="hk-v good">2,715</div></div>
+    
+    <div class="hk"><div class="hk-l">App Users</div><div class="hk-v">3,469</div></div><div class="hk"><div class="hk-l">MT + BA Users</div><div class="hk-v">8,249</div></div>
+    <div class="hk"><div class="hk-l">FTD</div><div class="hk-v good">2,867</div></div>
     <div class="hk"><div class="hk-l">Net Deposit</div><div class="hk-v good">$12.72M</div></div>
   </div>
 </header>
@@ -322,7 +322,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
       <div class="cw h200"><canvas id="c_rev_donut"></canvas></div>
     </div>
     <div class="cell">
-      <div class="ct">Web users + App sessions · top markets</div>
+      <div class="ct">Web users vs Q1 registrations · top markets</div>
       <div class="cw h200"><canvas id="c_web_app_cmp"></canvas></div>
     </div>
     <div class="cell">
@@ -337,8 +337,8 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
           <div style="font-size:11px;color:var(--ink2);line-height:1.55">Once users clear KYC, conversion holds. The problem is volume into EV, not EV→FTD.</div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:2px">Attribution · 79% of revenue untracked</div>
-          <div style="font-size:11px;color:var(--ink2);line-height:1.55">1,971 FTDs and $7.72M Net Deposit sit in the "-" source. Every channel ROI figure from attributed data is understated. The gap has widened — the untracked share is now 61%.</div>
+          <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:2px">Attribution · 61% of revenue untracked</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.55">1,971 FTDs and $7.72M Net Deposit sit in the "-" source (CRM attribution data). Unattributed FTDs carry $3,918 avg/FTD vs $1,104 attributed — a 3.5× gap. Every channel ROI figure we calculate is incomplete without fixing attribution.</div>
         </div>
       </div>
     </div>
@@ -504,11 +504,11 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 ═══════════════════════════════════════ -->
 <div class="page" id="page-conversion">
   <div class="ks n5" style="margin-top:0;border-top:none">
-    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">CRM → EV</div><div class="ki-v" style="color:var(--ad)">31.7%</div><div class="ki-s">benchmark 55–65%</div></div>
-    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">EV → FTD</div><div class="ki-v" style="color:var(--gd)">53.9%</div><div class="ki-s">above average</div></div>
-    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">KR FTD Rate</div><div class="ki-v" style="color:var(--pd)">28.0%</div><div class="ki-s">best market</div></div>
-    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">BR FTD Rate</div><div class="ki-v" style="color:var(--gd)">29.6%</div><div class="ki-s">volume leader</div></div>
-    <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">LATAM FTD Rate</div><div class="ki-v" style="color:var(--rd)">3.1%</div><div class="ki-s">2,929 clients · $369 avg</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">Reg → EV</div><div class="ki-v" style="color:var(--ad)">43.0%</div><div class="ki-s">5,036 / 11,718 · benchmark 55–65%</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">EV → FTD</div><div class="ki-v" style="color:var(--gd)">56.9%</div><div class="ki-s">2,867 / 5,036</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">KR FTD Rate</div><div class="ki-v" style="color:var(--pd)">31.3%</div><div class="ki-s">302 FTD / 964 reg</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">BR FTD Rate</div><div class="ki-v" style="color:var(--gd)">36.3%</div><div class="ki-s">2,432 FTD / 6,701 reg</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">LATAM FTD Rate</div><div class="ki-v" style="color:var(--rd)">8.2%</div><div class="ki-s">CO 42 · AR 15 · MX 13</div></div>
   </div>
 
   <div class="sh"><span class="sh-l">Lead Source Funnel</span><span class="sh-r">CRM attribution data</span></div>
@@ -539,6 +539,72 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
     <div class="cell"><div class="ct">EV Rate by lead source</div><div class="cw h210"><canvas id="c_ev_rate"></canvas></div></div>
     <div class="cell"><div class="ct">FTD Rate by lead source</div><div class="cw h210"><canvas id="c_ftd_rate"></canvas></div></div>
   </div>
+
+  <div class="sh"><span class="sh-l">Q1 Registration Trend</span><span class="sh-r">2024 vs 2025 vs 2026 · by country &amp; platform</span></div>
+
+  <div class="ks n4" style="border-bottom:1px solid var(--line);margin-top:0">
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div>
+      <div class="ki-l">Q1 2026 Registrations</div>
+      <div class="ki-v" style="color:var(--gd)">11,718</div>
+      <div class="ki-s">+194% vs Q1 2025</div>
+    </div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div>
+      <div class="ki-l">Brazil Q1 2026</div>
+      <div class="ki-v" style="color:var(--gd)">6,701</div>
+      <div class="ki-s">57.2% of total · was 94 in Q1 2025</div>
+    </div>
+    <div class="ki"><div class="ki-accent" style="background:var(--r)"></div>
+      <div class="ki-l">Korea Q1 2026</div>
+      <div class="ki-v" style="color:var(--rd)">964</div>
+      <div class="ki-s">-41% vs Q1 2025 (was 1,629)</div>
+    </div>
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div>
+      <div class="ki-l">Monthly deceleration</div>
+      <div class="ki-v" style="color:var(--ad)">-55%</div>
+      <div class="ki-s">Jan 5,663 → Mar 2,560</div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Q1 registrations by year · monthly breakdown</div>
+      <div class="cw h220"><canvas id="c_reg_monthly"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Q1 2026 registrations by country</div>
+      <div class="cw h220"><canvas id="c_reg_country"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Platform registrations · 2024 vs 2025 vs 2026</div>
+      <div class="cw h200"><canvas id="c_reg_platform"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Brazil vs Korea · registration trend by year</div>
+      <div class="cw h200"><canvas id="c_reg_br_kr"></canvas></div>
+    </div>
+  </div>
+
+  <div style="background:#fff;margin-top:1px;padding:.875rem">
+    <div class="ct">Key observations</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--gd);margin-bottom:3px">Brazil: from 94 → 6,701 registrations</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Q1 2025 had only 94 Brazil registrations — Brazil was effectively offline. Q1 2026 saw a 71× surge driven by BlackArrow (+8,815%) and App (+6,761%). This explains why the registration base is strong but 2025 YoY comparisons look artificially large.</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:3px">Korea: -41% YoY — registration base is shrinking</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Korea MT4 fell from 788 → 307 (-61%) and MT5 from 721 → 472 (-35%). Korea's FTD avg ticket ($17,023) remains the highest in the business, but fewer new users entering the funnel is a structural concern for future quarters. Only App is growing (+54%).</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Monthly deceleration needs watching</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Jan 5,663 → Feb 3,495 → Mar 2,560: down 55% from January peak to March. Some of this is normal post-launch seasonality, but the trend needs monitoring in April. If March pace continues, Q2 registrations would land around 7,680 — a 35% QoQ decline.</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══════════════════════════════════════
@@ -546,8 +612,8 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 ═══════════════════════════════════════ -->
 <div class="page" id="page-markets">
   <div class="ks n5" style="margin-top:0;border-top:none">
-    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">South Korea</div><div class="ki-v" style="color:var(--pd)">38.4%</div><div class="ki-s">of Net Deposit · $17,023/FTD</div></div>
-    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">Brazil</div><div class="ki-v" style="color:var(--gd)">58.3%</div><div class="ki-s">of Net Deposit · $3,193/FTD</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">South Korea</div><div class="ki-v" style="color:var(--pd)">38.4%</div><div class="ki-s">of Net Deposit · $16,176/FTD</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">Brazil</div><div class="ki-v" style="color:var(--gd)">58.3%</div><div class="ki-s">of Net Deposit · $3,048/FTD</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">LATAM</div><div class="ki-v" style="color:var(--ad)">0.5%</div><div class="ki-s">2,929 clients · $369/FTD</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">Zero-revenue region</div><div class="ki-v" style="color:var(--rd)">$0</div><div class="ki-s">Africa + S.Asia + MENA · 2,690 clients</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--b)"></div><div class="ki-l">Singapore</div><div class="ki-v" style="color:var(--b)">$328K</div><div class="ki-s">new market · positive net</div></div>
@@ -782,15 +848,15 @@ const CRM=[
   {s:'en-forexfactory',cl:101,ev:18,ftd:0,dep:0,ndep:0},
 ];
 const COUNTRIES=[
-  {c:'Brazil',r:'Brazil',cl:7828,ev:3857,ftd:2321,dep:2177971,ndep:7411064,note:''},
-  {c:'South Korea',r:'Korea',cl:1024,ev:565,ftd:287,dep:4885502,ndep:4885502,note:''},
+  {c:'Brazil',r:'Brazil',cl:6701,ev:0,ftd:2432,dep:7411064,ndep:7411064,note:''},
+  {c:'South Korea',r:'Korea',cl:964,ev:0,ftd:302,dep:4885502,ndep:4885502,note:''},
   {c:'Singapore',r:'SEA',cl:24,ev:0,ftd:0,dep:327990,ndep:327990,note:'New · no FTD yet'},
-  {c:'Colombia',r:'LATAM',cl:811,ev:158,ftd:37,dep:17836,ndep:17836,note:''},
+  {c:'Colombia',r:'LATAM',cl:514,ev:0,ftd:42,dep:17836,ndep:17836,note:''},
   {c:'India',r:'S.Asia',cl:616,ev:0,ftd:0,dep:0,ndep:0,note:'Compliance review'},
-  {c:'Argentina',r:'LATAM',cl:607,ev:91,ftd:11,dep:10182,ndep:10182,note:''},
+  {c:'Argentina',r:'LATAM',cl:316,ev:0,ftd:15,dep:10188,ndep:10188,note:''},
   {c:'Pakistan',r:'S.Asia',cl:462,ev:5,ftd:0,dep:0,ndep:0,note:'Compliance review'},
   {c:'Egypt',r:'MENA',cl:426,ev:3,ftd:0,dep:0,ndep:0,note:''},
-  {c:'Mexico',r:'LATAM',cl:400,ev:60,ftd:10,dep:2881,ndep:1393,note:''},
+  {c:'Mexico',r:'LATAM',cl:255,ev:0,ftd:13,dep:0,ndep:0,note:''},
   {c:'Peru',r:'LATAM',cl:349,ev:44,ftd:5,dep:1735,ndep:423,note:''},
   {c:'South Africa',r:'Africa',cl:311,ev:0,ftd:0,dep:0,ndep:0,note:'Regulatory pause'},
   {c:'Paraguay',r:'LATAM',cl:311,ev:33,ftd:5,dep:15100,ndep:15100,note:''},
@@ -820,13 +886,12 @@ function buildFunnel(){
   const steps=[
     {l:'Paid Spend',v:'$97,138',pct:100,col:G.b,note:'Q1 Jan–Mar'},
     {l:'Web Users',v:'212,628',pct:100,col:'#888',note:'web GA4'},
-    {l:'App Users',v:'6,616',pct:74,col:G.a,note:'app GA4'},
-    {l:'CRM Clients',v:'15,873',pct:7.5,col:'#b56d0a',note:'7.5% of web'},
-    {l:'EV Approved',v:'5,036',pct:31.7,col:G.p,note:'31.7% of CRM'},
-    {l:'FTD',v:'2,715',pct:53.9,col:G.g,note:'53.9% of EV'},
+    {l:'Registrations',v:'11,718',pct:5.5,col:G.a,note:'App 3,469 · MT+BA 8,249'},
+    {l:'EV Approved',v:'5,036',pct:43.0,col:G.p,note:'43.0% of registrations'},
+    {l:'FTD',v:'2,867',pct:56.9,col:G.g,note:'56.9% of EV'},
     {l:'Net Deposit',v:'$12.72M',pct:100,col:G.g,note:'ROAS 131×'},
   ];
-  const drops=[null,'↓ 92.5% bounce without registering','↓ separate surface · 6,616 new app users vs 212K web','↓ 68.3% lost at KYC stage','↓ 46.1% EV users don\'t deposit',null];
+  const drops=[null,'↓ 94.5% of web visitors never register','↓ 57.0% of registrations lost at KYC stage','↓ 43.1% of EV users don\'t deposit',null];
   document.getElementById('funnel-vis').innerHTML=steps.map((s,i)=>`
     <div class="fn-row">
       <div class="fn-lbl">${s.l}</div>
@@ -867,9 +932,9 @@ function buildAppBars(){
 function charts(){
   // Funnel comparison
   new Chart(document.getElementById('c_funnel_comp'),{type:'bar',data:{
-    labels:['GA4→CRM','CRM→EV','EV→FTD'],
+    labels:['Web→Reg','Reg→EV','EV→FTD'],
     datasets:[
-      {label:'Actual',data:[7.5,31.7,53.9],backgroundColor:[G.a+'99',G.r+'99',G.g+'99'],borderRadius:1},
+      {label:'Actual',data:[5.5,43.0,56.9],backgroundColor:[G.a+'99',G.r+'99',G.g+'99'],borderRadius:1},
       {label:'Benchmark',data:[8,60,55],backgroundColor:'rgba(0,0,0,0.07)',borderRadius:1}
     ]
   },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v+'%'}}}}});
@@ -958,6 +1023,51 @@ function charts(){
     datasets:[{data:wf.map(p=>+(p.ytd/p.ftd).toFixed(0)),backgroundColor:wf.map(p=>{const c=p.ytd/p.ftd;return c<100?G.g+'99':c<1500?G.b+'99':G.a+'99'}),borderRadius:1}]
   },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` CPA: ${usd(ctx.raw)}`}}},scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>usd(v)}}}}});
 
+
+
+  // Registration monthly comparison
+  new Chart(document.getElementById('c_reg_monthly'),{type:'bar',data:{
+    labels:['Jan','Feb','Mar'],
+    datasets:[
+      {label:'2024',data:[2543,2047,1860],backgroundColor:'#ccc',borderRadius:1},
+      {label:'2025',data:[1731,1216,1033],backgroundColor:G.a+'66',borderRadius:1},
+      {label:'2026',data:[5663,3495,2560],backgroundColor:G.g+'99',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},
+    scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // Registration by country 2026
+  new Chart(document.getElementById('c_reg_country'),{type:'bar',data:{
+    labels:['Brazil','Others','Spain','Korea','Mongolia','NZ'],
+    datasets:[{
+      data:[6701,2288,1335,964,313,44],
+      backgroundColor:[G.g+'99',G.ink3+'44','#aaa',G.p+'88',G.a+'66','#ccc'],
+      borderRadius:1
+    }]
+  },options:{...cO,indexAxis:'y',plugins:{...cO.plugins,
+    tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` ${ctx.raw.toLocaleString()} registrations`}}},
+    scales:{...cO.scales,x:{...cO.scales.x,ticks:{...cO.scales.x.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // Platform registrations 3-year comparison
+  new Chart(document.getElementById('c_reg_platform'),{type:'bar',data:{
+    labels:['MT5','APP','BlackArrow','MT4','Investing'],
+    datasets:[
+      {label:'2024',data:[3647,264,201,2330,8],backgroundColor:'#ccc',borderRadius:1},
+      {label:'2025',data:[2424,434,69,1053,0],backgroundColor:G.a+'66',borderRadius:1},
+      {label:'2026',data:[4443,3469,2344,1439,23],backgroundColor:G.g+'99',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},
+    scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // BR vs KR registration trend
+  new Chart(document.getElementById('c_reg_br_kr'),{type:'bar',data:{
+    labels:['Q1 2024','Q1 2025','Q1 2026'],
+    datasets:[
+      {label:'Brazil',data:[4624,94,6701],backgroundColor:G.g+'88',borderRadius:1},
+      {label:'Korea',data:[980,1629,964],backgroundColor:G.p+'88',borderRadius:1}
+    ]
+  },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},
+    scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
 
   // Platform donut
   new Chart(document.getElementById('c_platform_donut'),{type:'doughnut',data:{
@@ -1060,9 +1170,32 @@ function buildConv(f='all'){
 }
 function fConv(f,el){document.querySelectorAll('#fp-conv .fpill').forEach(p=>p.classList.remove('on'));el.classList.add('on');buildConv(f)}
 
+  const REG_FTD=[
+    {c:'BR',r:'Brazil',    reg:6701, ftd:2432, rate:36.3, ndep:7411064},
+    {c:'KR',r:'Korea',     reg:964,  ftd:302,  rate:31.3, ndep:4885502},
+    {c:'CO',r:'LATAM',     reg:514,  ftd:42,   rate:8.2,  ndep:17836},
+    {c:'EG',r:'MENA',      reg:358,  ftd:0,    rate:0,    ndep:0},
+    {c:'AR',r:'LATAM',     reg:316,  ftd:15,   rate:4.7,  ndep:10188},
+    {c:'MN',r:'Mongolia',  reg:313,  ftd:9,    rate:2.9,  ndep:3027},
+    {c:'IN',r:'S.Asia',    reg:291,  ftd:0,    rate:0,    ndep:0},
+    {c:'MX',r:'LATAM',     reg:255,  ftd:13,   rate:5.1,  ndep:0},
+    {c:'PK',r:'S.Asia',    reg:231,  ftd:0,    rate:0,    ndep:0},
+    {c:'PE',r:'LATAM',     reg:162,  ftd:7,    rate:4.3,  ndep:0},
+    {c:'ZA',r:'Africa',    reg:157,  ftd:0,    rate:0,    ndep:0},
+    {c:'PY',r:'LATAM',     reg:144,  ftd:6,    rate:4.2,  ndep:15398},
+    {c:'CL',r:'LATAM',     reg:56,   ftd:15,   rate:26.8, ndep:20066},
+    {c:'NZ',r:'NZ',        reg:43,   ftd:6,    rate:13.9, ndep:-8519},
+    {c:'SG',r:'SEA',       reg:6,    ftd:0,    rate:0,    ndep:327990},
+  ];
+
 // ═══════════════ MARKET TABLE ═══════════════
 function buildMkt(f='all'){
-  let rows=[...COUNTRIES];
+  // Use REG_FTD for accurate reg-based conversion rates
+  let rows=REG_FTD.map(d=>({
+    c:d.c, r:d.r, cl:d.reg, ev:0,
+    ftd:d.ftd, ftd_rate:d.rate,
+    dep:d.ndep, ndep:d.ndep, note:''
+  }));
   if(f==='kr') rows=rows.filter(d=>d.r==='Korea');
   else if(f==='br') rows=rows.filter(d=>d.r==='Brazil');
   else if(f==='latam') rows=rows.filter(d=>d.r==='LATAM');
@@ -1071,7 +1204,7 @@ function buildMkt(f='all'){
   rows.sort((a,b)=>b.cl-a.cl);
   const mx=Math.max(...rows.map(d=>d.cl));
   document.getElementById('tb-mkt').innerHTML=rows.map(d=>{
-    const er=d.ev/d.cl,fr=d.ftd/d.cl,avg=d.ftd>0?d.dep/d.ftd:0,neg=d.ndep<0;
+    const er=d.ftd_rate?d.ftd_rate/100:0,fr=d.ftd_rate?d.ftd_rate/100:d.ftd>0?d.ftd/d.cl:0,avg=d.ftd>0&&d.ndep>0?d.ndep/d.ftd:0,neg=d.ndep<0;
     return`<tr class="${d.ftd===0?'lo':''}">
       <td><strong>${d.c}</strong></td>
       <td><span class="pill pn">${d.r}</span></td>
