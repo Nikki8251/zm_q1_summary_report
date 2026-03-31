@@ -276,9 +276,9 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
   </div>
   <div class="hdr-kpis">
     <div class="hk"><div class="hk-l">Paid Spend</div><div class="hk-v">$97,138</div></div>
-    <div class="hk"><div class="hk-l">Web Users</div><div class="hk-v">212,628</div></div>
+    <div class="hk"><div class="hk-l">Website Users</div><div class="hk-v">212,628</div></div>
     
-    <div class="hk"><div class="hk-l">App Users</div><div class="hk-v">3,469</div></div><div class="hk"><div class="hk-l">MT + BA Users</div><div class="hk-v">8,249</div></div>
+    <div class="hk"><div class="hk-l">Reg Users</div><div class="hk-v">24,844</div></div>
     <div class="hk"><div class="hk-l">FTD</div><div class="hk-v good">2,867</div></div>
     <div class="hk"><div class="hk-l">Net Deposit</div><div class="hk-v good">$12.72M</div></div>
   </div>
@@ -288,7 +288,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 <nav class="nav">
   <div class="tab active" onclick="go('funnel',this)">Full Funnel</div>
   <div class="tab" onclick="go('spend',this)">Paid Spend</div>
-  <div class="tab" onclick="go('web',this)">Web Traffic</div>
+  <div class="tab" onclick="go('web',this)">Website Traffic</div>
   <div class="tab" onclick="go('app',this)">App Traffic</div>
   <div class="tab" onclick="go('conversion',this)">Conversion</div>
   <div class="tab" onclick="go('markets',this)">Markets</div>
@@ -304,7 +304,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 ═══════════════════════════════════════ -->
 <div class="page active" id="page-funnel">
 
-  <div class="sh"><span class="sh-l">Spend → Traffic → Revenue</span><span class="sh-r">web GA4 + app combined · Jan–Mar 2026</span></div>
+  <div class="sh"><span class="sh-l">Spend → Traffic → Revenue</span><span class="sh-r">website GA4 + app combined · Jan–Mar 2026</span></div>
 
   <div class="g21" style="margin-top:1px">
     <div class="cell">
@@ -407,7 +407,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 ═══════════════════════════════════════ -->
 <div class="page" id="page-web">
   <div class="ks n5" style="margin-top:0;border-top:none">
-    <div class="ki"><div class="ki-accent" style="background:var(--b)"></div><div class="ki-l">GA4 Users (Web)</div><div class="ki-v">212,628</div><div class="ki-s">www.zeromarkets.com</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--b)"></div><div class="ki-l">Website Users</div><div class="ki-v">212,628</div><div class="ki-s">www.zeromarkets.com</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--ink3)"></div><div class="ki-l">Sources tracked</div><div class="ki-v">205</div><div class="ki-s">unique GA4 sources</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">Highest KPU</div><div class="ki-v" style="color:var(--gd)">Bing</div><div class="ki-s">3.88 key events / user</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">Largest source</div><div class="ki-v" style="font-size:15px;font-family:var(--disp)">es-meta</div><div class="ki-s">53,935 users</div></div>
@@ -505,10 +505,10 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 ═══════════════════════════════════════ -->
 <div class="page" id="page-conversion">
   <div class="ks n5" style="margin-top:0;border-top:none">
-    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">Reg → EV</div><div class="ki-v" style="color:var(--ad)">43.0%</div><div class="ki-s">5,036 / 11,718 · benchmark 55–65%</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--a)"></div><div class="ki-l">Reg → EV</div><div class="ki-v" style="color:var(--ad)">20.3%</div><div class="ki-s">5,036 / 24,844 · benchmark 55–65%</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">EV → FTD</div><div class="ki-v" style="color:var(--gd)">56.9%</div><div class="ki-s">2,867 / 5,036</div></div>
-    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">KR FTD Rate</div><div class="ki-v" style="color:var(--pd)">31.3%</div><div class="ki-s">302 FTD / 964 reg</div></div>
-    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">BR FTD Rate</div><div class="ki-v" style="color:var(--gd)">36.3%</div><div class="ki-s">2,432 FTD / 6,701 reg</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">KR FTD Rate</div><div class="ki-v" style="color:var(--pd)">21.0%</div><div class="ki-s">302 FTD / 1,437 reg (incl. Unknown)</div></div>
+    <div class="ki"><div class="ki-accent" style="background:var(--g)"></div><div class="ki-l">BR FTD Rate</div><div class="ki-v" style="color:var(--gd)">17.7%</div><div class="ki-s">2,432 FTD / 13,726 reg (incl. Unknown)</div></div>
     <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">LATAM FTD Rate</div><div class="ki-v" style="color:var(--rd)">8.2%</div><div class="ki-s">CO 42 · AR 15 · MX 13</div></div>
   </div>
 
@@ -546,18 +546,18 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
   <div class="ks n4" style="border-bottom:1px solid var(--line);margin-top:0">
     <div class="ki"><div class="ki-accent" style="background:var(--g)"></div>
       <div class="ki-l">Q1 2026 Registrations</div>
-      <div class="ki-v" style="color:var(--gd)">11,718</div>
-      <div class="ki-s">+194% vs Q1 2025</div>
+      <div class="ki-v" style="color:var(--gd)">24,844</div>
+      <div class="ki-s">App 3,469 · MT+BA 8,249 · Unknown 13,144</div>
     </div>
     <div class="ki"><div class="ki-accent" style="background:var(--g)"></div>
       <div class="ki-l">Brazil Q1 2026</div>
-      <div class="ki-v" style="color:var(--gd)">6,701</div>
-      <div class="ki-s">57.2% of total · was 94 in Q1 2025</div>
+      <div class="ki-v" style="color:var(--gd)">13,726</div>
+      <div class="ki-s">55.2% of total (incl. 7,025 Unknown)</div>
     </div>
     <div class="ki"><div class="ki-accent" style="background:var(--r)"></div>
       <div class="ki-l">Korea Q1 2026</div>
-      <div class="ki-v" style="color:var(--rd)">964</div>
-      <div class="ki-s">-41% vs Q1 2025 (was 1,629)</div>
+      <div class="ki-v" style="color:var(--rd)">1,437</div>
+      <div class="ki-s">incl. 473 Unknown · -12% vs Q1 2025</div>
     </div>
     <div class="ki"><div class="ki-accent" style="background:var(--a)"></div>
       <div class="ki-l">Monthly deceleration</div>
@@ -658,7 +658,47 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
     </table></div>
   </div>
 
-  <div class="sh"><span class="sh-l">Net Deposit by Platform</span><span class="sh-r">trading platform breakdown · BlackArrow / MT5 / MT4 / APP</span></div>
+    <div class="sh"><span class="sh-l">Registrations by Entity &amp; Region</span><span class="sh-r">Q1 2026 · license-level view · 13,175 total</span></div>
+
+  <div class="g2" style="margin-top:1px">
+    <div class="cell">
+      <div class="ct">Q1 registrations by entity</div>
+      <div class="cw h190"><canvas id="c_entity_reg"></canvas></div>
+    </div>
+    <div class="cell">
+      <div class="ct">Q1 registrations by region</div>
+      <div class="cw h190"><canvas id="c_region_reg"></canvas></div>
+    </div>
+  </div>
+
+  <div style="background:#fff;margin-top:1px;padding:.875rem">
+    <div class="ct">Entity breakdown · Q1 2026</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)">
+      <div style="background:var(--paper);padding:.625rem .75rem">
+        <div style="font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:4px">Zero-MU · LATAM</div>
+        <div style="font-family:var(--disp);font-size:22px;font-weight:700;color:var(--gd)">9,408</div>
+        <div style="font-size:9px;color:var(--ink3);margin-top:3px">71.4% of entity total · Brazil primary</div>
+      </div>
+      <div style="background:var(--paper);padding:.625rem .75rem">
+        <div style="font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:4px">Zero-Group · Asia</div>
+        <div style="font-family:var(--disp);font-size:22px;font-weight:700;color:var(--pd)">2,086</div>
+        <div style="font-size:9px;color:var(--ink3);margin-top:3px">15.8% · Korea primary</div>
+      </div>
+      <div style="background:var(--paper);padding:.625rem .75rem">
+        <div style="font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:4px">Zero-Group · Others</div>
+        <div style="font-family:var(--disp);font-size:22px;font-weight:700;color:var(--b)">1,432</div>
+        <div style="font-size:9px;color:var(--ink3);margin-top:3px">10.9% · other markets</div>
+      </div>
+      <div style="background:var(--paper);padding:.625rem .75rem">
+        <div style="font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);margin-bottom:4px">Zero-FMA + HH-Marshall</div>
+        <div style="font-family:var(--disp);font-size:22px;font-weight:700;color:var(--ink3)">165</div>
+        <div style="font-size:9px;color:var(--ink3);margin-top:3px">1.3% · Others + Asia</div>
+      </div>
+    </div>
+    <div class="note-a" style="margin-top:.625rem">Entity total (13,175) vs platform total (11,718): +1,457 difference. Same Q1 period, different attribution logic — entity view captures users registered under each license entity, platform view captures by trading platform. Not additive.</div>
+  </div>
+
+<div class="sh"><span class="sh-l">Net Deposit by Platform</span><span class="sh-r">trading platform breakdown · BlackArrow / MT5 / MT4 / APP</span></div>
 
   <div class="g2" style="margin-top:1px">
     <div class="cell">
@@ -886,13 +926,13 @@ function usd(v){if(!v||v===0)return'$0';const n=v<0;const a=Math.abs(v);const s=
 function buildFunnel(){
   const steps=[
     {l:'Paid Spend',v:'$97,138',pct:100,col:G.b,note:'Q1 Jan–Mar'},
-    {l:'Web Users',v:'212,628',pct:100,col:'#888',note:'web GA4'},
-    {l:'Registrations',v:'11,718',pct:5.5,col:G.a,note:'App 3,469 · MT+BA 8,249'},
+    {l:'Website Users',v:'212,628',pct:100,col:'#888',note:'website GA4'},
+    {l:'Registrations',v:'24,844',pct:11.7,col:G.a,note:'App 3,469 · MT+BA 8,249 · Unknown 13,144'},
     {l:'EV Approved',v:'5,036',pct:43.0,col:G.p,note:'43.0% of registrations'},
     {l:'FTD',v:'2,867',pct:56.9,col:G.g,note:'56.9% of EV'},
     {l:'Net Deposit',v:'$12.72M',pct:100,col:G.g,note:'ROAS 131×'},
   ];
-  const drops=[null,'↓ 94.5% of web visitors never register','↓ 57.0% of registrations lost at KYC stage','↓ 43.1% of EV users don\'t deposit',null];
+  const drops=[null,'↓ 94.5% of web visitors never register','↓ App 3,469 · MT+BA 8,249 · Unknown 13,144 (not yet on platform)','↓ 43.1% of EV users don\'t deposit',null];
   document.getElementById('funnel-vis').innerHTML=steps.map((s,i)=>`
     <div class="fn-row">
       <div class="fn-lbl">${s.l}</div>
@@ -935,7 +975,7 @@ function charts(){
   new Chart(document.getElementById('c_funnel_comp'),{type:'bar',data:{
     labels:['Web→Reg','Reg→EV','EV→FTD'],
     datasets:[
-      {label:'Actual',data:[5.5,43.0,56.9],backgroundColor:[G.a+'99',G.r+'99',G.g+'99'],borderRadius:1},
+      {label:'Actual',data:[11.7,20.3,56.9],backgroundColor:[G.a+'99',G.r+'99',G.g+'99'],borderRadius:1},
       {label:'Benchmark',data:[8,60,55],backgroundColor:'rgba(0,0,0,0.07)',borderRadius:1}
     ]
   },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v+'%'}}}}});
@@ -951,7 +991,7 @@ function charts(){
   new Chart(document.getElementById('c_web_app_cmp'),{type:'bar',data:{
     labels:topC,
     datasets:[
-      {label:'Web users (~)',data:[100000,5100,2600,1500,1200],backgroundColor:G.b+'66',borderRadius:1},
+      {label:'Website users (~)',data:[100000,5100,2600,1500,1200],backgroundColor:G.b+'66',borderRadius:1},
       {label:'App users (est.)',data:[3861,402,263,193,130],backgroundColor:G.a+'99',borderRadius:1}
     ]
   },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
@@ -1070,6 +1110,33 @@ function charts(){
   },options:{...cO,plugins:{...cO.plugins,legend:{display:true,position:'top',labels:{font:cF,color:ink3,boxWidth:8}}},
     scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
 
+
+  // Entity registrations
+  new Chart(document.getElementById('c_entity_reg'),{type:'bar',data:{
+    labels:['Zero-MU','Zero-Group','Zero-FMA','HH-Marshall'],
+    datasets:[{
+      label:'Q1 Registrations',
+      data:[9433,3577,156,9],
+      backgroundColor:[G.g+'99',G.p+'88',G.b+'77',G.a+'55'],
+      borderRadius:1
+    }]
+  },options:{...cO,plugins:{...cO.plugins,
+    tooltip:{...cO.plugins.tooltip,callbacks:{label:ctx=>` ${ctx.raw.toLocaleString()} users`}}
+  },scales:{...cO.scales,y:{...cO.scales.y,ticks:{...cO.scales.y.ticks,callback:v=>v>=1000?v/1000+'K':v}}}}});
+
+  // Region registrations
+  new Chart(document.getElementById('c_region_reg'),{type:'doughnut',data:{
+    labels:['LATAM','Asia','Others'],
+    datasets:[{
+      data:[9467,2095,1613],
+      backgroundColor:[G.g,G.p,G.b+'88'],
+      borderWidth:1,borderColor:'#f6f5f1'
+    }]
+  },options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{
+    legend:{display:true,position:'right',labels:{font:cF,color:ink3,boxWidth:8,padding:5}},
+    tooltip:{backgroundColor:ink,callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw.toLocaleString()}`},titleFont:cF,bodyFont:cF}
+  }}});
+
   // Platform donut
   new Chart(document.getElementById('c_platform_donut'),{type:'doughnut',data:{
     labels:['BlackArrow','MT5','MT4','APP','Investing'],
@@ -1172,22 +1239,24 @@ function buildConv(f='all'){
 function fConv(f,el){document.querySelectorAll('#fp-conv .fpill').forEach(p=>p.classList.remove('on'));el.classList.add('on');buildConv(f)}
 
   const REG_FTD=[
-    {c:'BR',r:'Brazil',    reg:6701, ftd:2432, rate:36.3, ndep:7411064},
-    {c:'KR',r:'Korea',     reg:964,  ftd:302,  rate:31.3, ndep:4885502},
-    {c:'CO',r:'LATAM',     reg:514,  ftd:42,   rate:8.2,  ndep:17836},
-    {c:'EG',r:'MENA',      reg:358,  ftd:0,    rate:0,    ndep:0},
-    {c:'AR',r:'LATAM',     reg:316,  ftd:15,   rate:4.7,  ndep:10188},
-    {c:'MN',r:'Mongolia',  reg:313,  ftd:9,    rate:2.9,  ndep:3027},
-    {c:'IN',r:'S.Asia',    reg:291,  ftd:0,    rate:0,    ndep:0},
-    {c:'MX',r:'LATAM',     reg:255,  ftd:13,   rate:5.1,  ndep:0},
-    {c:'PK',r:'S.Asia',    reg:231,  ftd:0,    rate:0,    ndep:0},
-    {c:'PE',r:'LATAM',     reg:162,  ftd:7,    rate:4.3,  ndep:0},
-    {c:'ZA',r:'Africa',    reg:157,  ftd:0,    rate:0,    ndep:0},
-    {c:'PY',r:'LATAM',     reg:144,  ftd:6,    rate:4.2,  ndep:15398},
-    {c:'CL',r:'LATAM',     reg:56,   ftd:15,   rate:26.8, ndep:20066},
-    {c:'NZ',r:'NZ',        reg:43,   ftd:6,    rate:13.9, ndep:-8519},
-    {c:'SG',r:'SEA',       reg:6,    ftd:0,    rate:0,    ndep:327990},
-    {c:'Others',r:'Others',  reg:1206, ftd:21,   rate:1.7,  ndep:0},
+    {c:'BR',r:'Brazil',   reg:13726,ftd:2432,rate:17.7,ndep:7411064},
+    {c:'KR',r:'Korea',    reg:1437, ftd:302, rate:21.0,ndep:4885502},
+    {c:'CO',r:'LATAM',    reg:1243, ftd:42,  rate:3.4, ndep:17836},
+    {c:'IN',r:'S.Asia',   reg:834,  ftd:0,   rate:0,   ndep:0},
+    {c:'AR',r:'LATAM',    reg:761,  ftd:15,  rate:2.0, ndep:10188},
+    {c:'MX',r:'LATAM',    reg:656,  ftd:13,  rate:2.0, ndep:0},
+    {c:'MN',r:'Mongolia', reg:644,  ftd:9,   rate:1.4, ndep:3027},
+    {c:'PK',r:'S.Asia',   reg:569,  ftd:0,   rate:0,   ndep:0},
+    {c:'EG',r:'MENA',     reg:561,  ftd:0,   rate:0,   ndep:0},
+    {c:'ZA',r:'Africa',   reg:495,  ftd:0,   rate:0,   ndep:0},
+    {c:'PE',r:'LATAM',    reg:438,  ftd:7,   rate:1.6, ndep:0},
+    {c:'PY',r:'LATAM',    reg:341,  ftd:6,   rate:1.8, ndep:15398},
+    {c:'EC',r:'LATAM',    reg:206,  ftd:3,   rate:1.5, ndep:0},
+    {c:'NZ',r:'NZ',       reg:198,  ftd:4,   rate:2.0, ndep:-8519},
+    {c:'NG',r:'Africa',   reg:180,  ftd:0,   rate:0,   ndep:0},
+    {c:'CL',r:'LATAM',    reg:98,   ftd:16,  rate:16.3,ndep:20066},
+    {c:'SG',r:'SEA',      reg:26,   ftd:0,   rate:0,   ndep:327990},
+    {c:'Others',r:'Others',reg:2542,ftd:32,  rate:1.3, ndep:0},
   ];
 
 // ═══════════════ MARKET TABLE ═══════════════
