@@ -46,7 +46,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 .hk{padding:0 .875rem;border-right:1px solid var(--line2);text-align:right}
 .hk:last-child{border-right:none;padding-right:0}
 .hk-l{font-size:8.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px;white-space:nowrap}
-.hk-v{font-family:var(--disp);font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.025em;line-height:1}
+.hk-v{font-family:var(--body);font-size:18px;font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
 .hk-v.good{color:var(--gd)}
 .hk-v.warn{color:var(--ad)}
 .hk-s{font-size:9px;color:var(--ink3);margin-top:1px}
@@ -54,7 +54,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 /* ─────────────────────── NAV ─────────────────────── */
 .nav{background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 2rem;position:sticky;top:0;z-index:200;height:40px;gap:0;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tab{font-family:var(--body);font-size:12px;font-weight:500;color:var(--ink3);padding:0 12px;height:40px;display:flex;align-items:center;cursor:pointer;border-bottom:2px solid transparent;transition:color .12s;white-space:nowrap;letter-spacing:-.005em}
-.tab:hover{color:var(--ink2)}.tab.active{color:var(--ink);border-color:var(--ink);font-weight:600}
+.tab:hover{color:var(--ink2)}.tab.active{color:var(--ink);border-color:var(--ink);font-weight:700}
 .nav-sep{flex:1}
 .nav-tag{font-size:10px;color:var(--ink3);letter-spacing:.04em;font-weight:400}
 
@@ -63,19 +63,19 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 .page{display:none}.page.active{display:block}
 
 /* section heading */
-.sh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:.875rem 0 .4rem;border-bottom:1px solid var(--line)}
-.sh-l{font-family:var(--disp);font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3)}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:1rem 0 .5rem;border-bottom:2px solid var(--paper3)}
+.sh-l{font-family:var(--body);font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2)}
 .sh-r{font-size:10px;color:var(--ink3);font-weight:400}
 
 /* ─────────────────────── KPI STRIP ─────────────────────── */
 .ks{display:grid;border-bottom:1px solid var(--line)}
 .n4{grid-template-columns:repeat(4,1fr)}.n5{grid-template-columns:repeat(5,1fr)}.n6{grid-template-columns:repeat(6,1fr)}
-.ki{padding:.5rem .75rem .5rem .5rem;border-right:1px solid var(--line2);position:relative;text-align:center}
+.ki{padding:.625rem .875rem .625rem .625rem;border-right:1px solid var(--line2);position:relative;text-align:center}
 .ki:last-child{border-right:none}
 .ki-accent{position:absolute;top:0;left:0;width:2px;height:100%;display:none}
 .ki-l{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
-.ki-v{font-family:var(--disp);font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.025em;line-height:1}
-.ki-s{font-size:10px;color:var(--ink3);margin-top:3px}
+.ki-v{font-family:var(--body);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.ki-s{font-size:9.5px;color:var(--ink3);margin-top:4px;line-height:1.35}
 .ki-pill{display:inline-block;font-size:9px;font-weight:600;padding:1px 6px;border-radius:2px;margin-top:4px;letter-spacing:.02em}
 
 /* ─────────────────────── GRIDS ─────────────────────── */
@@ -83,8 +83,8 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line)}
 .g21{display:grid;grid-template-columns:1.3fr 1fr;gap:1px;background:var(--line)}
 .g12{display:grid;grid-template-columns:1fr 1.3fr;gap:1px;background:var(--line)}
-.cell{background:#fff;padding:.75rem}
-.ct{font-family:var(--body);font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem}
+.cell{background:#fff;padding:.875rem 1rem}
+.ct{font-family:var(--body);font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:.625rem;padding-bottom:.375rem;border-bottom:1px solid var(--line2)}
 
 /* ─────────────────────── CHARTS ─────────────────────── */
 .cw{position:relative}
@@ -94,7 +94,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 .fn-row{display:flex;align-items:center;gap:0;margin-bottom:3px}
 .fn-lbl{width:96px;font-size:11px;font-weight:500;color:var(--ink2);flex-shrink:0;text-align:right;padding-right:11px}
 .fn-wrap{flex:1;display:flex;align-items:center;gap:8px}
-.fn-bg{flex:1;height:26px;background:var(--paper2);border-radius:1px;overflow:hidden}
+.fn-bg{flex:1;height:28px;background:var(--paper2);border-radius:2px;overflow:hidden}
 .fn-fill{height:100%;display:flex;align-items:center;padding-left:9px;font-family:var(--disp);font-size:11px;font-weight:700;color:rgba(255,255,255,.93);white-space:nowrap}
 .fn-meta{font-size:10px;color:var(--ink3);width:84px;flex-shrink:0}
 .fn-drop{padding:1px 0 4px 96px;font-size:10px;color:var(--r);opacity:.65;font-weight:500}
@@ -106,44 +106,46 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 .wf-row{display:grid;grid-template-columns:118px 1fr 62px 148px;align-items:center;gap:8px;padding:4px 0;border-bottom:1px solid var(--line2)}
 .wf-row:last-child{border-bottom:none}
 .wf-n{font-size:12px;font-weight:500;color:var(--ink2)}
-.wf-bg{height:17px;background:var(--paper2);border-radius:1px;overflow:hidden}
+.wf-bg{height:18px;background:var(--paper2);border-radius:2px;overflow:hidden}
 .wf-f{height:100%;display:flex;align-items:center;padding-left:6px;font-size:9px;font-weight:600;color:rgba(255,255,255,.9);white-space:nowrap}
 .wf-amt{font-size:11px;color:var(--ink2);text-align:right;font-weight:500}
 .wf-res{font-size:10px;font-weight:600;text-align:right}
 .wf-res.ok{color:var(--gd)}.wf-res.z{color:var(--rd)}.wf-res.w{color:var(--ad)}
 
 /* ─────────────────────── TABLE ─────────────────────── */
-.tbl{width:100%;border-collapse:collapse}
-.tbl th{font-size:8.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);padding:4px 8px;border-bottom:1px solid var(--line);text-align:left;cursor:pointer;user-select:none;white-space:nowrap;background:#fff}
-.tbl th:hover{color:var(--ink)}.tbl th.asc::after{content:' ↑';color:var(--g)}.tbl th.desc::after{content:' ↓';color:var(--g)}
-.tbl td{padding:5px 8px;border-bottom:1px solid var(--line2);font-size:11.5px;color:var(--ink);vertical-align:middle;line-height:1.3}
-.tbl tr:hover td{background:var(--paper)}
-.tbl tr.hi td{background:#f5fdf8}.tbl tr.lo td{background:#fdf8f5}
+.tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.tbl th{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--ink3);padding:6px 10px 5px;border-bottom:2px solid var(--paper3);text-align:left;cursor:pointer;user-select:none;white-space:nowrap;background:var(--paper)}
+.tbl th:hover{color:var(--ink)}.tbl th.asc::after{content:' ↑';color:var(--g);font-weight:700}.tbl th.desc::after{content:' ↓';color:var(--g);font-weight:700}
+.tbl td{padding:7px 10px;border-bottom:1px solid var(--line2);font-size:12px;color:var(--ink);vertical-align:middle;line-height:1.3}
+.tbl tr:hover td{background:var(--paper2);transition:background .08s}
+.tbl tr.hi td{background:#f3fdf7}.tbl tr.lo td{background:var(--paper)}
 .tbl tr.tot td{font-weight:600;background:var(--paper2);border-top:1px solid var(--line);border-bottom:none}
 .tbl tr.others td{color:var(--ink3);font-style:italic}
 
 /* ─────────────────────── PILLS ─────────────────────── */
-.pill{display:inline-block;font-size:9px;font-weight:600;padding:1px 7px;border-radius:2px;letter-spacing:.02em}
+.pill{display:inline-block;font-size:8.5px;font-weight:600;padding:2px 8px;border-radius:3px;letter-spacing:.02em}
 .pg{background:var(--gl);color:var(--gd)}.pr{background:var(--rl);color:var(--rd)}.pa{background:var(--al);color:var(--ad)}.pb{background:var(--bl);color:var(--bd)}.pp{background:var(--pl);color:var(--pd)}.pn{background:var(--paper3);color:var(--ink3)}
 
 /* ─────────────────────── HEAT ─────────────────────── */
-.hot{color:var(--gd);font-weight:600}.mid{color:var(--ad);font-weight:600}.low{color:var(--rd);font-weight:600}.na{color:var(--ink3)}
+.hot{color:var(--gd);font-weight:700}.mid{color:var(--ad);font-weight:700}.low{color:var(--rd);font-weight:600}.na{color:var(--ink3)}
 
 /* ─────────────────────── INLINE BARS ─────────────────────── */
 .ibr{display:flex;align-items:center;gap:7px;margin-bottom:4px}
 .ibr-l{width:78px;font-size:11px;color:var(--ink2);flex-shrink:0;text-align:right}
-.ibr-bg{flex:1;height:15px;background:var(--paper2);border-radius:1px;overflow:hidden}
-.ibr-f{height:100%;display:flex;align-items:center;padding-left:5px;font-size:9px;font-weight:600;color:rgba(255,255,255,.9)}
+.ibr-bg{flex:1;height:16px;background:var(--paper3);border-radius:2px;overflow:hidden}
+.ibr-f{height:100%;display:flex;align-items:center;padding-left:7px;font-size:9px;font-weight:600;color:rgba(255,255,255,.95);border-radius:2px}
 .ibr-v{font-size:11px;font-weight:600;color:var(--ink2);width:52px;flex-shrink:0}
 
 /* ─────────────────────── THOUGHT CARDS ─────────────────────── */
-.tc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
-.tc{background:#fff;padding:1rem}
-.tc-num{font-size:9px;font-weight:600;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;font-family:var(--body)}
-.tc-h{font-family:var(--body);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.3;letter-spacing:-.02em}
+.tc-grid{display:flex;flex-direction:column;gap:1px;background:var(--line)}
+.tc{background:#fff;padding:.875rem 1rem .875rem 1.25rem;position:relative;display:grid;grid-template-columns:180px 1fr auto;gap:0 1.25rem;align-items:start}
+.tc-num{font-size:8.5px;font-weight:700;color:var(--ink3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;font-family:var(--body)}
+.tc-h{font-family:var(--body);font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:0;line-height:1.35;letter-spacing:-.015em}
 .tc-h.g{color:var(--gd)}.tc-h.r{color:var(--rd)}.tc-h.a{color:var(--ad)}.tc-h.b{color:var(--bd)}.tc-h.p{color:var(--pd)}
-.tc-body{font-size:12px;color:var(--ink2);line-height:1.62}
-.tc-tag{display:inline-block;margin-top:8px;font-size:9px;font-weight:600;padding:2px 8px;border-radius:2px;letter-spacing:.02em}
+.tc-left{display:flex;flex-direction:column;justify-content:flex-start;padding-top:.125rem}
+.tc-accent{position:absolute;left:0;top:0;bottom:0;width:3px}
+.tc-body{font-size:11.5px;color:var(--ink2);line-height:1.6}
+.tc-tag{display:inline-block;margin-top:6px;font-size:8.5px;font-weight:600;padding:2px 8px;border-radius:2px;letter-spacing:.02em;white-space:nowrap;align-self:start}
 
 /* ─────────────────────── NOTES ─────────────────────── */
 .note{background:var(--gl);border-left:2px solid var(--g);padding:7px 11px;font-size:11px;color:var(--gd);line-height:1.55;margin:.5rem 0}
@@ -213,7 +215,8 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
   .ki-s{font-size:9px}
 
   /* All grids single col */
-  .g2,.g3,.g21,.g12,.tc-grid{grid-template-columns:1fr}
+  .g2,.g3,.g21,.g12{grid-template-columns:1fr}
+  .tc{grid-template-columns:1fr;padding-left:1.25rem}
 
   /* Section headings */
   .sh{flex-direction:column;gap:.125rem;padding:.75rem 0 .375rem}
@@ -330,16 +333,16 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
       <div class="ct">Where the funnel breaks</div>
       <div style="display:flex;flex-direction:column;gap:10px;padding-top:.125rem">
         <div>
-          <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:2px">CRM → EV · 31.7% — main bottleneck</div>
+          <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:2px">Reg → EV · 20.3%, main bottleneck</div>
           <div style="font-size:11px;color:var(--ink2);line-height:1.55">Benchmark is 55–65%. 10,837 registered users never complete KYC. Closing this gap to 45% would add ~1,130 FTDs and ~$1.58M Net Deposit from users already acquired.</div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:600;color:var(--gd);margin-bottom:2px">EV → FTD · 53.9% — solid</div>
-          <div style="font-size:11px;color:var(--ink2);line-height:1.55">Once users clear KYC, conversion holds. The problem is volume into EV, not EV→FTD.</div>
+          <div style="font-size:11px;font-weight:600;color:var(--gd);margin-bottom:2px">EV → FTD · 60.9%, solid</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.55">Once users clear KYC, 60.9% convert to FTD. The bottleneck is registration → EV, not EV → FTD.</div>
         </div>
         <div>
           <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:2px">Attribution · 61% of revenue untracked</div>
-          <div style="font-size:11px;color:var(--ink2);line-height:1.55">1,971 FTDs and $7.72M Net Deposit sit in the "-" source (CRM attribution data). Unattributed FTDs carry $3,918 avg/FTD vs $1,104 attributed — a 3.5× gap. Every channel ROI figure we calculate is incomplete without fixing attribution.</div>
+          <div style="font-size:11px;color:var(--ink2);line-height:1.55">1,971 FTDs and $7.72M Net Deposit sit in the "-" source (CRM attribution data). Unattributed FTDs carry $3,918 avg/FTD vs $1,104 attributed, a 3.5× gap. Every channel ROI figure we calculate is incomplete without fixing attribution.</div>
         </div>
       </div>
     </div>
@@ -395,9 +398,9 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
   <div class="g2" style="margin-top:1px">
     <div class="cell"><div class="ct">Monthly spend</div><div class="cw h170"><canvas id="c_monthly"></canvas></div></div>
     <div class="cell" style="display:flex;flex-direction:column;justify-content:center;gap:9px">
-      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--ink)">January spike ($55.8K)</strong> — multiple platforms launched simultaneously with no performance gates between them. KR-investing ($25.8K) and Forex Factory ($10.7K) ran in parallel in January.</div>
-      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--ad)">Forex Factory ($21.3K, Jan–Feb)</strong> — contract ended Feb 20 with zero FTD for the full term.</div>
-      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--b)">Rankia starts Mar ($10.4K)</strong> — attribution unconfirmed. UTM chain needs verification before further spend.</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--ink)">January spike ($55.8K)</strong>, multiple platforms launched simultaneously with no performance gates between them. KR-investing ($25.8K) and Forex Factory ($10.7K) ran in parallel in January.</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--ad)">Forex Factory ($21.3K, Jan–Feb)</strong>, contract ended Feb 20 with zero FTD for the full term.</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62"><strong style="color:var(--b)">Rankia starts Mar ($10.4K)</strong>, attribution unconfirmed. UTM chain needs verification before further spend.</div>
     </div>
   </div>
 </div>
@@ -414,7 +417,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
     <div class="ki"><div class="ki-accent" style="background:var(--p)"></div><div class="ki-l">AI Search</div><div class="ki-v">417</div><div class="ki-s">ChatGPT + Gemini · 67–103s eng</div></div>
   </div>
 
-  <div class="sh"><span class="sh-l">Channel Volume vs Quality</span><span class="sh-r">KPU = Key Events per User — intent proxy</span></div>
+  <div class="sh"><span class="sh-l">Channel Volume vs Quality</span><span class="sh-r">KPU = Key Events per User, intent proxy</span></div>
   <div class="g2" style="margin-top:1px">
     <div class="cell"><div class="ct">Users by channel</div><div class="cw h210"><canvas id="c_web_users"></canvas></div></div>
     <div class="cell"><div class="ct">Key Events per User (quality score)</div><div class="cw h210"><canvas id="c_web_kpu"></canvas></div></div>
@@ -423,12 +426,12 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 
   <div class="g2" style="margin-top:1px">
     <div class="cell">
-      <div class="ct">Top 12 sources — users, KPU, engagement</div>
+      <div class="ct">Top 12 sources, users, KPU, engagement</div>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Source</th><th>Users</th><th>KPU</th><th>Avg Eng</th><th>Channel</th></tr></thead><tbody id="t_web_src"></tbody></table></div>
     </div>
     <div class="cell">
-      <div class="ct">AI Search — early signal worth tracking</div>
-      <div style="font-size:12px;color:var(--ink2);line-height:1.62;margin-bottom:10px">ChatGPT.com and Gemini are already sending pre-qualified users. Gemini's 103s avg engagement beats almost every paid placement. This channel compounds over time — publish structured comparison content now.</div>
+      <div class="ct">AI Search, early signal worth tracking</div>
+      <div style="font-size:12px;color:var(--ink2);line-height:1.62;margin-bottom:10px">ChatGPT.com and Gemini are already sending pre-qualified users. Gemini's 103s avg engagement beats almost every paid placement. This channel compounds over time, publish structured comparison content now.</div>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Source</th><th>Users</th><th>KPU</th><th>Avg Eng</th></tr></thead>
         <tbody>
           <tr><td>chatgpt.com</td><td>186</td><td>1.49</td><td>62s</td></tr>
@@ -436,7 +439,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
           <tr><td>perplexity</td><td>1</td><td>—</td><td>26s</td></tr>
         </tbody>
       </table></div>
-      <div class="note">These users asked an AI "which CFD broker" and found us — highest intent possible. No ad cost.</div>
+      <div class="note">These users asked an AI "which CFD broker" and found us, highest intent possible. No ad cost.</div>
     </div>
   </div>
 </div>
@@ -469,7 +472,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
     </div>
   </div>
 
-  <div class="sh"><span class="sh-l">AppsFlyer — Installs &amp; Logins</span><span class="sh-r">99.9% organic · Facebook Ads = 4 installs total</span></div>
+  <div class="sh"><span class="sh-l">AppsFlyer · Installs &amp; Logins</span><span class="sh-r">99.9% organic · Facebook Ads = 4 installs total</span></div>
   <div class="g2" style="margin-top:1px">
     <div class="cell">
       <div class="ct">App funnel · Installs → Trader</div>
@@ -489,12 +492,12 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
         <div style="font-size:11px;color:var(--ink2);line-height:1.58">6,227 app users (60% of total), 531 FTD (91% of all app FTDs), $374,764 deposit. Korea delivers $2,577 avg/FTD despite smaller volume. Brazil dominates both user count and revenue.</div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Login rate at 32% — needs work</div>
-        <div style="font-size:11px;color:var(--ink2);line-height:1.58">6,554 installs → 1,530 registered (23.3%) → 806 completed EV (52.7%) → 810 deposited. Install-to-register at 23.3% is the biggest drop — two-thirds of installs never register. Build an onboarding push sequence (Day 1 + Day 3) before investing in paid UA.</div>
+        <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Login rate at 32%, needs work</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">6,554 installs → 1,530 registered (23.3%) → 806 completed EV (52.7%) → 810 deposited. Install-to-register at 23.3% is the biggest drop, two-thirds of installs never register. Build an onboarding push sequence (Day 1 + Day 3) before investing in paid UA.</div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:3px">99.9% organic — no paid UA yet</div>
-        <div style="font-size:11px;color:var(--ink2);line-height:1.58">100% organic growth — no paid UA yet. Login 2,074 > Registered 1,530, and country "users" total 10,436 > Installs 6,554 — all because the SQL user data includes pre-Q1 existing users who remain active. New registrations in Q1 = 1,530.</div>
+        <div style="font-size:11px;font-weight:600;color:var(--ink);margin-bottom:3px">99.9% organic, no paid UA yet</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">100% organic growth, no paid UA yet. Login 2,074 > Registered 1,530, and country "users" total 10,436 > Installs 6,554, all because the SQL user data includes pre-Q1 existing users who remain active. New registrations in Q1 = 1,530.</div>
       </div>
     </div>
   </div>
@@ -593,15 +596,15 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
       <div>
         <div style="font-size:11px;font-weight:600;color:var(--gd);margin-bottom:3px">Brazil: from 94 → 6,701 registrations</div>
-        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Q1 2025 had only 94 Brazil registrations — Brazil was effectively offline. Q1 2026 saw a 71× surge driven by BlackArrow (+8,815%) and App (+6,761%). This explains why the registration base is strong but 2025 YoY comparisons look artificially large.</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Q1 2025 had only 94 Brazil registrations, Brazil was effectively offline. Q1 2026 saw a 71× surge driven by BlackArrow (+8,815%) and App (+6,761%). This explains why the registration base is strong but 2025 YoY comparisons look artificially large.</div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:3px">Korea: -41% YoY — registration base is shrinking</div>
+        <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:3px">Korea: -41% YoY, registration base is shrinking</div>
         <div style="font-size:11px;color:var(--ink2);line-height:1.58">Korea MT4 fell from 788 → 307 (-61%) and MT5 from 721 → 472 (-35%). Korea's FTD avg ticket ($15,760) remains the highest in the business, but fewer new users entering the funnel is a structural concern for future quarters. Only App is growing (+54%).</div>
       </div>
       <div>
         <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Monthly deceleration needs watching</div>
-        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Jan 5,663 → Feb 3,495 → Mar 2,560: down 55% from January peak to March. Some of this is normal post-launch seasonality, but the trend needs monitoring in April. If March pace continues, Q2 registrations would land around 7,680 — a 35% QoQ decline.</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Jan 5,663 → Feb 3,495 → Mar 2,560: down 55% from January peak to March. Some of this is normal post-launch seasonality, but the trend needs monitoring in April. If March pace continues, Q2 registrations would land around 7,680, a 35% QoQ decline.</div>
       </div>
     </div>
   </div>
@@ -645,14 +648,11 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
     <div class="tbl-wrap"><table class="tbl" id="t-mkt">
       <thead><tr>
         <th onclick="sT('t-mkt',0)">Country</th>
-        <th onclick="sT('t-mkt',1)">Region</th>
-        <th onclick="sT('t-mkt',2)" title="Q1 new registrations across all platforms (App + MT5 + MT4 + BlackArrow)">Q1 Reg (all platforms)</th>
-        <th>Conv. Rate</th>
-        <th onclick="sT('t-mkt',4)">FTD</th>
-        <th onclick="sT('t-mkt',5)">FTD Rate</th>
-        <th onclick="sT('t-mkt',6)">Net Dep</th>
-        <th onclick="sT('t-mkt',7)">Avg / FTD</th>
-        <th>Note</th>
+        <th onclick="sT('t-mkt',1)">Q1 Reg</th>
+        <th onclick="sT('t-mkt',2)">FTD</th>
+        <th onclick="sT('t-mkt',3)">FTD Rate</th>
+        <th onclick="sT('t-mkt',4)">Net Dep</th>
+        <th onclick="sT('t-mkt',5)">Avg / FTD</th>
       </tr></thead>
       <tbody id="tb-mkt"></tbody>
     </table></div>
@@ -695,7 +695,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
         <div style="font-size:9px;color:var(--ink3);margin-top:3px">1.3% · Others + Asia</div>
       </div>
     </div>
-    <div class="note-a" style="margin-top:.625rem">Entity total (13,175) vs platform total (11,718): +1,457 difference. Same Q1 period, different attribution logic — entity view captures users registered under each license entity, platform view captures by trading platform. Not additive.</div>
+    <div class="note-a" style="margin-top:.625rem">Entity total (13,175) vs platform total (11,718): +1,457 difference. Same Q1 period, different attribution logic, entity view captures users registered under each license entity, platform view captures by trading platform. Not additive.</div>
   </div>
 
 <div class="sh"><span class="sh-l">Net Deposit by Platform</span><span class="sh-r">trading platform breakdown · BlackArrow / MT5 / MT4 / APP</span></div>
@@ -719,11 +719,11 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
         <div style="font-size:11px;color:var(--ink2);line-height:1.58">BlackArrow drives 56.4% of all FTDs (1,728 users) but only $3,277 avg ticket. MT4 has 7.5% of FTDs but $8,083 avg ticket, the highest of any platform. MT5 at $6,869 is also significantly ahead of BlackArrow. Volume ≠ value here.</div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Korea APP: 18 FTDs, $3,944 avg — clear opportunity</div>
-        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Korea MT5 avg ticket is $20,126 and MT4 is $13,193 — the highest in the entire dataset. Korea APP users average $3,549 ($70,989/20 FTDs) but there are only 20 of them. A targeted campaign to move Korean desktop traders to the app could yield disproportionate returns.</div>
+        <div style="font-size:11px;font-weight:600;color:var(--ad);margin-bottom:3px">Korea APP: 18 FTDs, $3,944 avg, clear opportunity</div>
+        <div style="font-size:11px;color:var(--ink2);line-height:1.58">Korea MT5 avg ticket is $20,126 and MT4 is $13,193, the highest in the entire dataset. Korea APP users average $3,549 ($70,989/20 FTDs) but there are only 20 of them. A targeted campaign to move Korean desktop traders to the app could yield disproportionate returns.</div>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:3px">APP avg ticket ($1,561) is 5× below MT4 — structural gap</div>
+        <div style="font-size:11px;font-weight:600;color:var(--rd);margin-bottom:3px">APP avg ticket ($1,561) is 5× below MT4, structural gap</div>
         <div style="font-size:11px;color:var(--ink2);line-height:1.58">APP platform: 411 FTDs, $1,341 avg ticket. MT4: 229 FTDs, $8,083 avg. The app is acquiring more users but at much lower deposit value. Whether this is a UX issue, audience mix, or product limitation needs investigation before scaling app UA.</div>
       </div>
     </div>
@@ -753,7 +753,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 ═══════════════════════════════════════ -->
 <div class="page" id="page-thoughts">
 
-  <!-- top metrics bar — dark -->
+  <!-- top metrics bar, dark -->
   <div class="stat-band-thoughts" style="background:var(--ink2);display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid rgba(255,255,255,.1);overflow-x:auto">
     <div style="padding:.625rem 1rem;border-right:1px solid rgba(255,255,255,.1)"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);margin-bottom:4px">Revenue concentration</div><div style="font-family:var(--disp);font-size:24px;font-weight:800;color:#e07060;letter-spacing:-.025em">96.7%</div><div style="font-size:10px;color:rgba(255,255,255,.3)">KR + BR only</div></div>
     <div style="padding:.625rem 1rem;border-right:1px solid rgba(255,255,255,.1)"><div style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.32);margin-bottom:4px">Attribution gap</div><div style="font-family:var(--disp);font-size:24px;font-weight:800;color:#e07060;letter-spacing:-.025em">61%</div><div style="font-size:10px;color:rgba(255,255,255,.3)">of revenue untracked</div></div>
@@ -763,48 +763,68 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
   </div>
 
   <div class="tc-grid" style="margin-top:1px">
-    
     <div class="tc">
-      <div class="tc-num">02 · Paid Mix</div>
-      <div class="tc-h r">Forex Factory and Myfxbook delivered zero FTD — redirect that budget</div>
-      <div class="tc-body">Forex Factory $21K + Myfxbook $12K = $33K with no funded clients. Both had GA4 traffic (2,902 and 71 CRM respectively) but zero conversion to deposit. However note: myfxbook now shows $24K net deposit in the updated data — worth confirming if this is real conversion before cancelling. Redirect remaining zero-return budget to nelogica — $788K net deposit on $6.5K spend.</div>
-      <div class="tc-tag" style="background:var(--rl);color:var(--rd)">P0 · Immediate</div>
+      <div class="tc-accent" style="background:var(--r)"></div>
+      <div class="tc-left">
+        <div class="tc-num">02 · Paid Mix</div>
+        <div class="tc-h r">Forex Factory and Myfxbook delivered zero FTD, redirect that budget</div>
+        <div class="tc-tag" style="background:var(--rl);color:var(--rd);margin-top:8px;align-self:flex-start">P0 · Immediate</div>
+      </div>
+      <div class="tc-body">Forex Factory $21K + Myfxbook $12K = $33K with no funded clients. Both had GA4 traffic (2,902 and 71 CRM respectively) but zero conversion to deposit. However note: myfxbook now shows $24K net deposit in the updated data, worth confirming if this is real conversion before cancelling. Redirect remaining zero-return budget to nelogica, $788K net deposit on $6.5K spend.</div>
     </div>
     <div class="tc">
-      <div class="tc-num">03 · Market Concentration</div>
-      <div class="tc-h a">KR + BR = 96.7% of revenue — two markets, one structural risk</div>
-      <div class="tc-body">Korea at $15,760/FTD and Brazil at $2,809/FTD — both improved significantly with updated data. Korea needs active retention and re-deposit programs — these are high-LTV clients and losing even 10% of the cohort is material. Brazil's funnel works well (29.6% FTD rate) but avg ticket is low. Brazil's avg ticket jumped from $938 to $2,809 — a major positive shift. The focus now shifts to protecting and growing this trajectory.</div>
-      <div class="tc-tag" style="background:var(--al);color:var(--ad)">P1 · 90-day plan</div>
+      <div class="tc-accent" style="background:var(--a)"></div>
+      <div class="tc-left">
+        <div class="tc-num">03 · Market Concentration</div>
+        <div class="tc-h a">KR + BR = 96.7% of revenue, two markets, one structural risk</div>
+        <div class="tc-tag" style="background:var(--al);color:var(--ad);margin-top:8px;align-self:flex-start">P1 · 90-day plan</div>
+      </div>
+      <div class="tc-body">Korea at $15,760/FTD and Brazil at $2,809/FTD, both improved significantly with updated data. Korea needs active retention and re-deposit programs, these are high-LTV clients and losing even 10% of the cohort is material. Brazil's funnel works well (29.6% FTD rate) but avg ticket is low. Brazil's avg ticket jumped from $938 to $2,809, a major positive shift. The focus now shifts to protecting and growing this trajectory.</div>
     </div>
     <div class="tc">
-      <div class="tc-num">04 · LATAM Activation</div>
-      <div class="tc-h g">485 EV-approved LATAM users are verified and unfunded — already in CRM</div>
-      <div class="tc-body">Colombia 158 EV, Argentina 91, Mexico 60, Ecuador 32 — KYC cleared, never deposited. The acquisition cost is paid. A 3-email sequence (Day 1: platform intro, Day 4: limited bonus, Day 10: trade signal) targeting this cohort could yield ~$67K Net Deposit with zero additional spend. This is the highest-ROI move available right now.</div>
-      <div class="tc-tag" style="background:var(--gl);color:var(--gd)">P1 · Build sequence this week</div>
+      <div class="tc-accent" style="background:var(--g)"></div>
+      <div class="tc-left">
+        <div class="tc-num">04 · LATAM Activation</div>
+        <div class="tc-h g">485 EV-approved LATAM users are verified and unfunded, already in CRM</div>
+        <div class="tc-tag" style="background:var(--gl);color:var(--gd);margin-top:8px;align-self:flex-start">P1 · Build sequence this week</div>
+      </div>
+      <div class="tc-body">Colombia 158 EV, Argentina 91, Mexico 60, Ecuador 32, KYC cleared, never deposited. The acquisition cost is paid. A 3-email sequence (Day 1: platform intro, Day 4: limited bonus, Day 10: trade signal) targeting this cohort could yield ~$67K Net Deposit with zero additional spend. This is the highest-ROI move available right now.</div>
     </div>
     <div class="tc">
-      <div class="tc-num">05 · App</div>
-      <div class="tc-h a">App login rate at 32% — build onboarding before paid UA</div>
-      <div class="tc-body">6,554 installs → 1,530 registered (23.3%) → 806 EV → 810 deposited. The biggest funnel leak is Install→Register: 76.7% of installs never complete registration. Fix onboarding before investing in paid UA — push notification sequence on Day 1 and Day 3 post-install could meaningfully close this gap.</div>
-      <div class="tc-tag" style="background:var(--al);color:var(--ad)">P1 · Onboarding fix Q2</div>
+      <div class="tc-accent" style="background:var(--a)"></div>
+      <div class="tc-left">
+        <div class="tc-num">05 · App</div>
+        <div class="tc-h a">App login rate at 32%, build onboarding before paid UA</div>
+        <div class="tc-tag" style="background:var(--al);color:var(--ad);margin-top:8px;align-self:flex-start">P1 · Onboarding fix Q2</div>
+      </div>
+      <div class="tc-body">6,554 installs → 1,530 registered (23.3%) → 806 EV → 810 deposited. The biggest funnel leak is Install→Register: 76.7% of installs never complete registration. Fix onboarding before investing in paid UA, push notification sequence on Day 1 and Day 3 post-install could meaningfully close this gap.</div>
     </div>
     <div class="tc">
-      <div class="tc-num">06 · KYC Funnel</div>
-      <div class="tc-h b">CRM → EV at 31.7% — the most valuable improvement available</div>
-      <div class="tc-body">Benchmark is 55–65%. Getting to 45% adds ~2,100 EV users from the existing registered base — at current EV→FTD rates, ~1,130 more FTDs and ~$1.58M Net Deposit. No additional acquisition spend required. Document guidance, progress indicators, and KYC completion reminders in the onboarding flow are the highest-ROI product investment right now.</div>
-      <div class="tc-tag" style="background:var(--bl);color:var(--bd)">P1 · Product + CRM</div>
+      <div class="tc-accent" style="background:var(--b)"></div>
+      <div class="tc-left">
+        <div class="tc-num">06 · KYC Funnel</div>
+        <div class="tc-h b">CRM → EV at 31.7%, the most valuable improvement available</div>
+        <div class="tc-tag" style="background:var(--bl);color:var(--bd);margin-top:8px;align-self:flex-start">P1 · Product + CRM</div>
+      </div>
+      <div class="tc-body">Benchmark is 55–65%. Getting to 45% adds ~2,100 EV users from the existing registered base, at current EV→FTD rates, ~1,130 more FTDs and ~$1.58M Net Deposit. No additional acquisition spend required. Document guidance, progress indicators, and KYC completion reminders in the onboarding flow are the highest-ROI product investment right now.</div>
     </div>
     <div class="tc">
-      <div class="tc-num">07 · China / Japan</div>
-      <div class="tc-h p">Small pool, high ticket — worth a controlled test in H2</div>
-      <div class="tc-body">China (1 FTD, $2,885), Japan (1 FTD, $1,000), Greater China cluster avg $4,325/FTD — 4.6× LATAM. Even 20 FTDs from this cluster at current avg adds $86K. The acquisition cost will be higher but the LTV math is compelling. A focused H2 test makes sense once Brazil and Korea programs are stable.</div>
-      <div class="tc-tag" style="background:var(--pl);color:var(--pd)">P2 · H2 test</div>
+      <div class="tc-accent" style="background:var(--p)"></div>
+      <div class="tc-left">
+        <div class="tc-num">07 · China / Japan</div>
+        <div class="tc-h p">Small pool, high ticket, worth a controlled test in H2</div>
+        <div class="tc-tag" style="background:var(--pl);color:var(--pd);margin-top:8px;align-self:flex-start">P2 · H2 test</div>
+      </div>
+      <div class="tc-body">China (1 FTD, $2,885), Japan (1 FTD, $1,000), Greater China cluster avg $4,325/FTD, 4.6× LATAM. Even 20 FTDs from this cluster at current avg adds $86K. The acquisition cost will be higher but the LTV math is compelling. A focused H2 test makes sense once Brazil and Korea programs are stable.</div>
     </div>
     <div class="tc">
-      <div class="tc-num">08 · AI Search</div>
-      <div class="tc-h b">ChatGPT and Gemini traffic is small but shows higher intent than most paid channels</div>
-      <div class="tc-body">417 users, Gemini at 103s avg engagement. Notably, chatgptcom source now shows $10,548 net deposit — these AI-referred users are converting to real revenue. This channel is generating returns already. This channel grows ~40–60%/year industry-wide. Publishing structured comparison content and broker review pages now is a low-cost, compounding investment. Start Q2.</div>
-      <div class="tc-tag" style="background:var(--bl);color:var(--bd)">P2 · Content Q2</div>
+      <div class="tc-accent" style="background:var(--b)"></div>
+      <div class="tc-left">
+        <div class="tc-num">08 · AI Search</div>
+        <div class="tc-h b">ChatGPT and Gemini traffic is small but shows higher intent than most paid channels</div>
+        <div class="tc-tag" style="background:var(--bl);color:var(--bd);margin-top:8px;align-self:flex-start">P2 · Content Q2</div>
+      </div>
+      <div class="tc-body">417 users, Gemini at 103s avg engagement. Notably, chatgptcom source now shows $10,548 net deposit, these AI-referred users are converting to real revenue. This channel is generating returns already. This channel grows ~40–60%/year industry-wide. Publishing structured comparison content and broker review pages now is a low-cost, compounding investment. Start Q2.</div>
     </div>
   </div>
 
@@ -814,12 +834,12 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
       <thead><tr><th>#</th><th>Action</th><th>Rationale</th><th>Effort</th><th>Impact</th></tr></thead>
       <tbody>
         <tr class="hi"><td style="font-family:var(--disp);font-weight:700">01</td><td>Stop Myfxbook</td><td>0 FTD on $12K across contract period</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">$12K freed</span></td></tr>
-        <tr class="hi"><td style="font-family:var(--disp);font-weight:700">02</td><td>3–5× nelogica budget</td><td>ROAS 79.8× on $6.5K, CPA $9.6 — strongest signal in the mix</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">+$1.5M proj.</span></td></tr>
-        <tr><td style="font-family:var(--disp);font-weight:700">03</td><td>India / Pakistan compliance check</td><td>1,078 clients, $0 revenue — clarify eligibility</td><td><span class="pill pg">Low</span></td><td><span class="pill pa">Budget clarity</span></td></tr>
-        <tr><td style="font-family:var(--disp);font-weight:700">04</td><td>LATAM EV activation (3-email sequence)</td><td>485 EV-approved, unfunded — pipeline exists, free</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">~$67K est.</span></td></tr>
-        <tr><td style="font-family:var(--disp);font-weight:700">05</td><td>App onboarding push sequence</td><td>32% login rate — fix before paid UA investment</td><td><span class="pill pa">Medium</span></td><td><span class="pill pa">Retention</span></td></tr>
+        <tr class="hi"><td style="font-family:var(--disp);font-weight:700">02</td><td>3–5× nelogica budget</td><td>ROAS 79.8× on $6.5K, CPA $9.6, strongest signal in the mix</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">+$1.5M proj.</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">03</td><td>India / Pakistan compliance check</td><td>1,078 clients, $0 revenue, clarify eligibility</td><td><span class="pill pg">Low</span></td><td><span class="pill pa">Budget clarity</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">04</td><td>LATAM EV activation (3-email sequence)</td><td>485 EV-approved, unfunded, pipeline exists, free</td><td><span class="pill pg">Low</span></td><td><span class="pill pg">~$67K est.</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">05</td><td>App onboarding push sequence</td><td>32% login rate, fix before paid UA investment</td><td><span class="pill pa">Medium</span></td><td><span class="pill pa">Retention</span></td></tr>
         <tr><td style="font-family:var(--disp);font-weight:700">06</td><td>Brazil tiered deposit incentive test</td><td>$938 → $1,200 avg ticket = +$615K at current FTD volume</td><td><span class="pill pa">Medium</span></td><td><span class="pill pg">+$615K est.</span></td></tr>
-        <tr><td style="font-family:var(--disp);font-weight:700">07</td><td>Korea re-deposit + retention campaign</td><td>$15,760 avg ticket — highest LTV cohort we have</td><td><span class="pill pa">Medium</span></td><td><span class="pill pg">High LTV</span></td></tr>
+        <tr><td style="font-family:var(--disp);font-weight:700">07</td><td>Korea re-deposit + retention campaign</td><td>$15,760 avg ticket, highest LTV cohort we have</td><td><span class="pill pa">Medium</span></td><td><span class="pill pg">High LTV</span></td></tr>
       </tbody>
     </table></div>
   </div>
@@ -917,8 +937,8 @@ const G={g:'#129c5e',r:'#c83b1e',a:'#b56d0a',b:'#1a52be',p:'#5535b8'};
 const ink='#111009',ink3='#8c8880';
 const cF={family:'DM Sans',size:9};
 const cO={responsive:true,maintainAspectRatio:false,
-  plugins:{legend:{display:false},tooltip:{backgroundColor:ink,titleFont:cF,bodyFont:cF,padding:8,cornerRadius:2}},
-  scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:cF,color:ink3}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{font:cF,color:ink3}}}};
+  plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1917',titleFont:cF,bodyFont:cF,padding:10,cornerRadius:3,titleColor:'#fff',bodyColor:'rgba(255,255,255,.75)',borderColor:'rgba(255,255,255,.08)',borderWidth:1}},
+  scales:{x:{grid:{color:'rgba(0,0,0,0.035)'},border:{display:false},ticks:{font:cF,color:ink3}},y:{grid:{color:'rgba(0,0,0,0.035)'},border:{display:false},ticks:{font:cF,color:ink3}}}};
 
 function usd(v){if(!v||v===0)return'$0';const n=v<0;const a=Math.abs(v);const s=a>=1e6?'$'+(a/1e6).toFixed(2)+'M':a>=1e3?'$'+Math.round(a/1e3)+'K':'$'+Math.round(a);return n?'-'+s:s}
 
@@ -932,7 +952,7 @@ function buildFunnel(){
     {l:'FTD',v:'3,065',pct:56.9,col:G.g,note:'60.9% of EV'},
     {l:'Net Deposit',v:'$12.72M',pct:100,col:G.g,note:'ROAS 131×'},
   ];
-  const drops=[null,'↓ 94.5% of web visitors never register','↓ App 3,469 · MT+BA 8,249 · Unknown 13,144 (not yet on platform)','↓ 43.1% of EV users don\'t deposit',null];
+  const drops=[null,'↓ 88.3% of web visitors never register','↓ App 3,469 · MT+BA 8,249 · Unknown 13,144 (not yet on platform)','↓ 39.1% of EV users don\'t deposit',null];
   document.getElementById('funnel-vis').innerHTML=steps.map((s,i)=>`
     <div class="fn-row">
       <div class="fn-lbl">${s.l}</div>
@@ -986,7 +1006,7 @@ function charts(){
     datasets:[{data:[7411064,4885502,327990,96034],backgroundColor:[G.g,G.p,G.b,'#ccc'],borderWidth:1,borderColor:'#f6f5f1'}]
   },options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:true,position:'right',labels:{font:cF,color:ink3,boxWidth:8,padding:5}},tooltip:{backgroundColor:ink,callbacks:{label:ctx=>`${ctx.label}: ${usd(ctx.raw)}`},titleFont:cF,bodyFont:cF}}}});
 
-  // Web + App country — using actual users, not sessions
+  // Web + App country, using actual users, not sessions
   const topC=['Brazil','South Korea','Colombia','Mexico','Argentina'];
   new Chart(document.getElementById('c_web_app_cmp'),{type:'bar',data:{
     labels:topC,
@@ -1147,7 +1167,7 @@ function charts(){
     tooltip:{backgroundColor:ink,callbacks:{label:ctx=>`${ctx.label}: ${usd(ctx.raw)}`},titleFont:cF,bodyFont:cF}
   }}});
 
-  // Avg ticket by platform — key insight
+  // Avg ticket by platform, key insight
   new Chart(document.getElementById('c_plat_br_kr'),{type:'bar',data:{
     labels:['MT4','MT5','BlackArrow','APP','Investing'],
     datasets:[{
@@ -1239,53 +1259,52 @@ function buildConv(f='all'){
 function fConv(f,el){document.querySelectorAll('#fp-conv .fpill').forEach(p=>p.classList.remove('on'));el.classList.add('on');buildConv(f)}
 
   const REG_FTD=[
-    {c:'BR',r:'Brazil',   reg:13726,ftd:2638,rate:17.7,ndep:7411064},
-    {c:'KR',r:'Korea',    reg:1437, ftd:310, rate:21.0,ndep:4885502},
-    {c:'CO',r:'LATAM',    reg:1243, ftd:42,  rate:3.4, ndep:17836},
-    {c:'IN',r:'S.Asia',   reg:834,  ftd:0,   rate:0,   ndep:0},
-    {c:'AR',r:'LATAM',    reg:761,  ftd:15,  rate:2.0, ndep:10188},
-    {c:'MX',r:'LATAM',    reg:656,  ftd:13,  rate:2.0, ndep:0},
-    {c:'MN',r:'Mongolia', reg:644,  ftd:9,   rate:1.4, ndep:3027},
-    {c:'PK',r:'S.Asia',   reg:569,  ftd:0,   rate:0,   ndep:0},
-    {c:'EG',r:'MENA',     reg:561,  ftd:0,   rate:0,   ndep:0},
-    {c:'ZA',r:'Africa',   reg:495,  ftd:0,   rate:0,   ndep:0},
-    {c:'PE',r:'LATAM',    reg:438,  ftd:7,   rate:1.6, ndep:0},
-    {c:'PY',r:'LATAM',    reg:341,  ftd:6,   rate:1.8, ndep:15398},
-    {c:'EC',r:'LATAM',    reg:206,  ftd:3,   rate:1.5, ndep:0},
-    {c:'NZ',r:'NZ',       reg:198,  ftd:4,   rate:2.0, ndep:-8519},
-    {c:'NG',r:'Africa',   reg:180,  ftd:0,   rate:0,   ndep:0},
-    {c:'CL',r:'LATAM',    reg:98,   ftd:16,  rate:16.3,ndep:20066},
-    {c:'SG',r:'SEA',      reg:26,   ftd:0,   rate:0,   ndep:327990},
-    {c:'Others',r:'Others',reg:2542,ftd:32,  rate:1.3, ndep:0},
+    {c:'BR', ftd_rate:19.2, reg:13726,ftd:2638,ndep:7411064},
+    {c:'KR', ftd_rate:21.6, reg:1437, ftd:310, ndep:4885502},
+    {c:'CO', ftd_rate:3.1,  reg:1243, ftd:39,  ndep:17836},
+    {c:'IN', ftd_rate:0,    reg:834,  ftd:0,   ndep:0},
+    {c:'AR', ftd_rate:1.7,  reg:761,  ftd:13,  ndep:10188},
+    {c:'MX', ftd_rate:1.8,  reg:656,  ftd:12,  ndep:0},
+    {c:'MN', ftd_rate:1.1,  reg:644,  ftd:7,   ndep:3027},
+    {c:'PK', ftd_rate:0,    reg:569,  ftd:0,   ndep:0},
+    {c:'EG', ftd_rate:0,    reg:561,  ftd:0,   ndep:0},
+    {c:'ZA', ftd_rate:0,    reg:495,  ftd:0,   ndep:0},
+    {c:'PE', ftd_rate:1.4,  reg:438,  ftd:6,   ndep:0},
+    {c:'PY', ftd_rate:1.5,  reg:341,  ftd:5,   ndep:15398},
+    {c:'EC', ftd_rate:1.5,  reg:206,  ftd:3,   ndep:0},
+    {c:'NZ', ftd_rate:1.5,  reg:198,  ftd:3,   ndep:-8519},
+    {c:'NG', ftd_rate:0,    reg:180,  ftd:0,   ndep:0},
+    {c:'CL', ftd_rate:14.3, reg:98,   ftd:14,  ndep:20066},
+    {c:'SG', ftd_rate:0,    reg:26,   ftd:0,   ndep:327990},
+    {c:'Others',ftd_rate:1.3,reg:2542,ftd:32,  ndep:0},
   ];
 
 // ═══════════════ MARKET TABLE ═══════════════
 function buildMkt(f='all'){
   // Use REG_FTD for accurate reg-based conversion rates
   let rows=REG_FTD.map(d=>({
-    c:d.c, r:d.r, cl:d.reg, ev:0,
-    ftd:d.ftd, ftd_rate:d.rate,
-    dep:d.ndep, ndep:d.ndep, note:''
+    c:d.c, cl:d.reg,
+    ftd:d.ftd, ftd_rate:d.ftd_rate,
+    ndep:d.ndep
   }));
-  if(f==='kr') rows=rows.filter(d=>d.r==='Korea');
-  else if(f==='br') rows=rows.filter(d=>d.r==='Brazil');
-  else if(f==='latam') rows=rows.filter(d=>d.r==='LATAM');
+  const KR=['KR']; const BR=['BR'];
+  const LATAM=['CO','AR','MX','PE','PY','EC','CL'];
+  if(f==='kr') rows=rows.filter(d=>KR.includes(d.c));
+  else if(f==='br') rows=rows.filter(d=>BR.includes(d.c));
+  else if(f==='latam') rows=rows.filter(d=>LATAM.includes(d.c));
   else if(f==='funded') rows=rows.filter(d=>d.ftd>0);
   else if(f==='zero') rows=rows.filter(d=>d.ftd===0);
   rows.sort((a,b)=>b.cl-a.cl);
   const mx=Math.max(...rows.map(d=>d.cl));
   document.getElementById('tb-mkt').innerHTML=rows.map(d=>{
-    const er=d.ftd_rate?d.ftd_rate/100:0,fr=d.ftd_rate?d.ftd_rate/100:d.ftd>0?d.ftd/d.cl:0,avg=d.ftd>0&&d.ndep>0?d.ndep/d.ftd:0,neg=d.ndep<0;
+    // rates calculated inline
     return`<tr class="${d.ftd===0?'lo':''}">
       <td><strong>${d.c}</strong></td>
-      <td><span class="pill pn">${d.r}</span></td>
-      <td>${d.cl}</td>
-      <td><span class="${er>0.4?'hot':er>0.15?'mid':er>0?'low':'na'}">${(er*100).toFixed(1)}%</span></td>
-      <td><strong>${d.ftd||'—'}</strong></td>
-      <td><span class="${fr>0.2?'hot':fr>0.05?'mid':fr>0?'low':'na'}">${d.ftd>0?(fr*100).toFixed(1)+'%':'—'}</span></td>
-      <td class="${neg?'low':''}">${d.ndep!==0?usd(d.ndep):'—'}</td>
-      <td>${avg>0?usd(avg):'—'}</td>
-      <td>${d.note?`<span class="pill pa">${d.note}</span>`:'—'}</td>
+      <td>${d.cl.toLocaleString()}</td>
+      <td><strong>${d.ftd>0?d.ftd.toLocaleString():'—'}</strong></td>
+      <td><span class="${d.ftd_rate>20?'hot':d.ftd_rate>5?'mid':d.ftd_rate>0?'low':'na'}">${d.ftd_rate>0?d.ftd_rate.toFixed(1)+'%':'—'}</span></td>
+      <td class="${d.ndep<0?'low':''}">${d.ndep!==0?usd(d.ndep):'—'}</td>
+      <td>${d.ftd>0&&d.ndep>0?usd(d.ndep/d.ftd):'—'}</td>
     </tr>`;
   }).join('');
 }
