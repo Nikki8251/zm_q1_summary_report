@@ -120,6 +120,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
 .tbl tr:hover td{background:var(--paper)}
 .tbl tr.hi td{background:#f5fdf8}.tbl tr.lo td{background:#fdf8f5}
 .tbl tr.tot td{font-weight:600;background:var(--paper2);border-top:1px solid var(--line);border-bottom:none}
+.tbl tr.others td{color:var(--ink3);font-style:italic}
 
 /* ─────────────────────── PILLS ─────────────────────── */
 .pill{display:inline-block;font-size:9px;font-weight:600;padding:1px 7px;border-radius:2px;letter-spacing:.02em}
@@ -511,7 +512,7 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
     <div class="ki"><div class="ki-accent" style="background:var(--r)"></div><div class="ki-l">LATAM FTD Rate</div><div class="ki-v" style="color:var(--rd)">8.2%</div><div class="ki-s">CO 42 · AR 15 · MX 13</div></div>
   </div>
 
-  <div class="sh"><span class="sh-l">Lead Source Funnel</span><span class="sh-r">CRM attribution data</span></div>
+  <div class="sh"><span class="sh-l">Lead Source Funnel</span><span class="sh-r">Q1 new registrations · all platforms incl. App · SQL data</span></div>
   <div style="background:#fff;margin-top:1px">
     <div class="fp" id="fp-conv">
       <div class="fpill on" onclick="fConv('all',this)">All</div>
@@ -645,8 +646,8 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);font-size:
       <thead><tr>
         <th onclick="sT('t-mkt',0)">Country</th>
         <th onclick="sT('t-mkt',1)">Region</th>
-        <th onclick="sT('t-mkt',2)">Clients</th>
-        <th onclick="sT('t-mkt',3)">EV Rate</th>
+        <th onclick="sT('t-mkt',2)" title="Q1 new registrations across all platforms (App + MT5 + MT4 + BlackArrow)">Q1 Reg (all platforms)</th>
+        <th>Conv. Rate</th>
         <th onclick="sT('t-mkt',4)">FTD</th>
         <th onclick="sT('t-mkt',5)">FTD Rate</th>
         <th onclick="sT('t-mkt',6)">Net Dep</th>
@@ -871,7 +872,7 @@ const COUNTRIES=[
   {c:'Netherlands',r:'Europe',cl:113,ev:0,ftd:0,dep:0,ndep:0,note:'ESMA restriction'},
   {c:'Germany',r:'Europe',cl:77,ev:0,ftd:0,dep:0,ndep:0,note:'ESMA restriction'},
 ];
-const RCOL={Brazil:'#129c5e',Korea:'#5535b8',LATAM:'#b56d0a','S.Asia':'#c83b1e',Africa:'#888',MENA:'#b56d0a',Europe:'#1a52be','China/JP':'#c83b1e',NZ:'#2090b8',SEA:'#1a52be'};
+const RCOL={Others:'#aaa8a3',Brazil:'#129c5e',Korea:'#5535b8',LATAM:'#b56d0a','S.Asia':'#c83b1e',Africa:'#888',MENA:'#b56d0a',Europe:'#1a52be','China/JP':'#c83b1e',NZ:'#2090b8',SEA:'#1a52be'};
 const G={g:'#129c5e',r:'#c83b1e',a:'#b56d0a',b:'#1a52be',p:'#5535b8'};
 const ink='#111009',ink3='#8c8880';
 const cF={family:'DM Sans',size:9};
@@ -1186,6 +1187,7 @@ function fConv(f,el){document.querySelectorAll('#fp-conv .fpill').forEach(p=>p.c
     {c:'CL',r:'LATAM',     reg:56,   ftd:15,   rate:26.8, ndep:20066},
     {c:'NZ',r:'NZ',        reg:43,   ftd:6,    rate:13.9, ndep:-8519},
     {c:'SG',r:'SEA',       reg:6,    ftd:0,    rate:0,    ndep:327990},
+    {c:'Others',r:'Others',  reg:1206, ftd:21,   rate:1.7,  ndep:0},
   ];
 
 // ═══════════════ MARKET TABLE ═══════════════
@@ -1292,7 +1294,7 @@ function go(id,el){
       const avg = d.ftd>0 && d.ndep>0 ? d.ndep/d.ftd : 0;
       const isHi = (d.c==='KR'&&d.p==='MT5')||(d.c==='KR'&&d.p==='MT4');
       const isTop = d.c==='BR'&&d.p==='BlackArrow';
-      return `<tr class="${isHi?'hi':isTop?'hi':''}">
+      return `<tr class="${d.c==='Others'?'others':isHi?'hi':isTop?'hi':''}">
         <td><strong>${d.c}</strong></td>
         <td><span class="pill pn">${d.p}</span></td>
         <td><strong>${d.ftd}</strong></td>
